@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {{{body}}}
-  </body>
+    <head>
+
+        <!-- Favicon: -->
+        <link rel="icon" href="#">
+
+
+        <!-- Settings: -->
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, height=device-height user-scalable=no, initial-scale=1.0, viewport-fit=cover">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+        <!-- Application settings: -->
+        <meta name="application-name" content="Isak">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+        <!-- Description: -->
+        <meta name="description" content="CST 236 - Internet Programming">
+
+
+        <!-- Crawling and indexing: -->
+        <meta name="robots" content="index,follow"><!-- All Search Engines -->
+        <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+
+
+        <!-- Disable Google Translate: -->
+        <meta name="google" content="notranslate">
+
+        <title>{{title}}</title>
+        <!-- Google Fonts: -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+
+        <!-- Custom style: -->
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <main>
+            {{{body}}}
+        </main>
+    </body>
+    <footer class="bg-dark">
+        <section class="py-2">
+            <div class="container text-center">
+                <p class="m-0 text-white small">&copy;<span id="year"></span> Isak Hauge. All rights reserved.</p>
+            </div>
+        </section>
+    </footer>
+    <script>
+        window.onload = function () {
+            document.getElementById('year').innerText = new Date().getFullYear().toString();
+        }
+    </script>
 </html>
