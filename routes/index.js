@@ -14,22 +14,22 @@ router.get('/', function(req, res, next) {
 
 /* Portfolio page */
 router.get('/portfolio', function(req, res, next) {
-  res.render('portfolio', {
+  res.render('portfolio/index', {
     title: 'Portfolio',
   });
 });
 
 /* Portfolio page */
 router.get('/portfolio/about', function(req, res, next) {
-  res.render('portfolio-about', {
-    title: 'Portfolio',
+  res.render('portfolio/about', {
+    title: 'About',
   });
 });
 
 /* Portfolio page */
 router.get('/portfolio/contact', function(req, res, next) {
-  res.render('portfolio-contact', {
-    title: 'Portfolio',
+  res.render('portfolio/contact', {
+    title: 'Contact',
   });
 });
 
