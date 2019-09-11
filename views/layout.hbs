@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
 
         <!-- Favicon: -->
@@ -32,27 +32,17 @@
         <meta name="google" content="notranslate">
 
         <title>{{title}}</title>
+
         <!-- Google Fonts: -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{{fonts}}">
 
         <!-- Custom style: -->
         <link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel='stylesheet' href='{{css}}' />
     </head>
     <body>
         <main>
             {{{body}}}
         </main>
     </body>
-    <footer class="bg-dark">
-        <section class="py-2">
-            <div class="container text-center">
-                <p class="m-0 text-white small">&copy;<span id="year"></span> Isak Hauge. All rights reserved.</p>
-            </div>
-        </section>
-    </footer>
-    <script>
-        window.onload = function () {
-            document.getElementById('year').innerText = new Date().getFullYear().toString();
-        }
-    </script>
 </html>

@@ -1,0 +1,25 @@
+$map: (
+	'index': 10px,
+
+	// Themes:
+	'theme': (
+
+		// Week 2 Portfolio:
+		'portfolio-lab': (
+			'font': (
+				default: (
+					family: 'Roboto',
+					size: 1.2rem,
+					line-height: 1.3,
+					weight: 400,
+				),
+				h1: (
+					family: 'Playfair Display',
+					size: 3.5rem,
+					line-height: 1.5,
+					weight: 700,
+				),
+			),
+		),
+	),
+);

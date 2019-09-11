@@ -1,0 +1,104 @@
+<section>
+    <div class="img"></div>
+</section>
+
+<section class="bb3">
+    <div class="content p20">
+        <div class="search">
+            <div class="search-bar"></div>
+            <div class="search-btn">Search</div>
+        </div>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <div class="icon">
+        </div>
+    </div>
+    <div class="sidebar p20">
+        <h2>FAQs</h2>
+        <h4>Question 1</h4>
+        <p>kmaefjnadfw</p>
+        <h4>Question 2</h4>
+        <p>kmawdjnaefjn</p>
+    </div>
+</section>
+
+<style>
+    section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img{
+        display: flex;
+        content: "";
+        width: 70vw;
+        height: 200px;
+        background-color: blue;
+    }
+
+    .content {
+        margin-top: 30px;
+        flex-basis: 0;
+        flex-grow: 3;
+        position: relative;
+    }
+
+    .content > *:not(.icon){
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .sidebar{
+        flex-basis: 0;
+        flex-grow: 1;
+        border-left: 3px solid black;
+    }
+
+    .p20{
+        padding: 20px;
+    }
+
+    .bb3{
+        border-bottom: 3px solid black;
+    }
+
+    .search{
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 30px;
+    }
+
+    .search *{
+        align-items: stretch;
+        border-radius: 5px;
+    }
+
+    .search-bar{
+        flex-grow: 1;
+        background-color: lightslategray;
+    }
+
+    .search-btn{
+        padding: 15px 20px;
+        background-color: lightgreen;
+        margin-left: 30px;
+        text-align: center;
+    }
+
+    .icon{
+        width: 30px;
+        height: 30px;
+        background-color: crimson;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+</style>

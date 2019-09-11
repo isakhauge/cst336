@@ -1,40 +1,27 @@
-<div class="nav-bar fixed bg-white">
-    <div class="container nav-content-wrapper">
-        <div class="brand">
-            ISAK
-        </div>
-        <div class="nav-menu">
-            <ul>
-                <li><a href="/portfolio">Home</a></li>
-                <li><a href="/portfolio/about">About</a></li>
-                <li><a href="/portfolio/contact" class="active">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2 class="mt-0">Contact information</h2>
-                <p>
-                    ihauge@csumb.edu<br>
-                    0047 915 27 060
-                </p>
-                <h2 class="mt-5">Social media</h2>
-                <p>
-                    <a href="https://www.linkedin.com/in/isakhauge/" target="_blank">LinkedIn</a><br>
-                    <a href="https://www.instagram.com/isakkhauge/" target="_blank">Instagram</a>
-                </p>
-            </div>
-            <div class="col">
-                <img src="/images/portfolio/ig7.jpg" class="rounded-s shadow-m" width="100%" alt="">
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdtvrAcDB9ZdDoEcxy64a-lLAvfQq3A8XLdiubBdEaAIkABSQ/viewform?embedded=true" width="640" height="822" frameborder="0" marginheight="0" marginwidth="0">Laster inn …</iframe>
-    </div>
-</section>
+<header>
+	<h1>Isak Hauge</h1>
+</header>
+
+<nav>
+	<hr width="50%">
+	<a href="/portfolio">Home</a>
+	<a href="/portfolio/about">About</a>
+	<a href="/portfolio/contact" class="active">Contact</a>
+</nav>
+
+<br><br>
+
+<main>
+	<div id="content">
+		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdtvrAcDB9ZdDoEcxy64a-lLAvfQq3A8XLdiubBdEaAIkABSQ/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Laster inn …</iframe>
+	</div>
+</main>
+
+<footer>
+	<p class="m-0 text-white small">
+		CST 336. &copy;<span id="year"></span> Hauge. <br>
+		<strong>Disclaimer:</strong> The information in this webpage is fictitous.<br>
+		It is used for academic purposes only.
+	</p>
+	<script>window.onload=function(){document.getElementById('year').innerText = new Date().getFullYear().toString();}</script>
+</footer>
