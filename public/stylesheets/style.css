@@ -611,7 +611,7 @@ nav .container {
 }
 
 .text-transparent {
-  color: false !important;
+  color: transparent !important;
 }
 
 .text-white-50 {
