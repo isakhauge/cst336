@@ -1,0 +1,57 @@
+{{{navbar}}}
+
+<section class="h20" style="height: 300px">
+	<img src="/images/project1/banner.png" alt="Banner image">
+</section>
+
+<section class="py-2 bg-light bx-dark">
+	<div class="container">
+		<h2>What are custom properties in CSS</h2>
+		<div class="quote">
+			<span class="quote-text">Custom properties participate in the cascade: each of them can appear several times, and the value of the variable will match the value defined in the custom property decided by the cascading algorithm.</span>
+			<span class="quote-source"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*">Mozilla (MDN Web Docs)</a>, last accessed 2018.09.25</span>
+		</div>
+	</div>
+</section>
+<section class="py-2">
+	<div class="container">
+		<div class="center">
+			<iframe src="https://giphy.com/embed/sybV46NZNxLDG" width="480" height="258" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+		</div>
+		<div class="row">
+			<div class="col">
+				<p>It may sound like technical gibberish for anyone outside english speaking countries, so let me try to rephrase. Custom properties are variables you can assign with values. You can reuse these variables inside the stylesheet (i.e. CSS).</p>
+				<p>Theoretically, we already have variables in CSS, sort of, but they do not work the same way in which they do in programming languages (e.g. Java or Python). In the “traditional” application of CSS in conjunction with HTML, you initialize variables in the form of classes and IDs like the following.</p>
+				<div class="code code-box my-2">
+					.bluepill{ color:blue; }<br>
+					#redpill{ color:red; }
+				</div>
+			</div>
+			<div class="col">
+				<p>Every time you assign an HTML element with a defined class or ID, like this, <code>&lt;div class="bluepill"&gt;&lt;/div&gt;</code>, the browser will style said element in accordance with the “variable” (class/ID) you defined in your stylesheet. For example, if you have assigned a class to multiple elements, you can easily change the visual appearance of all said elements by simply changing the attributes of your class. However, the application of these variable references only work in conjunction — meaning that they can only be initialized in CSS and then be referred back to in HTML.</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<p>The implication of this limitation renders a painful challenge in cases where you want to reuse CSS parameters inside the stylesheet. For example, if you have invested precious time to define the perfect color #FF0000 and you want to reuse that specific color within your stylesheet and apply it to a myriad of different classes without having to re-enter the hexadecimal string every f*cking time, you will surely suffer great without the use of variables.</p>
+		<p>Throughout this tutorial you will see the word “cascade” a lot, but what does it actually mean in the context of variables?</p>
+	</div>
+</section>
+
+<section class="py-2 bg-light bx-dark">
+	<div class="container">
+		<div class="quote quote-big">
+			<span class="quote-text">Cascade [noun]; a process whereby something, typically information or knowledge, is successively passed on. As modifier «the greater the number of people who are well briefed, the wider the cascade effect».</span>
+			<span class="quote-source"><a href="https://en.oxforddictionaries.com/definition/cascade">Oxford Dictionary</a>, last accessed 2018.09.24</span>
+		</div>
+	</div>
+</section>
+
+<section class="py-2">
+	<div class="container">
+		<p>All variables are cascading per se, or have cascading effects thanks to the cascading algorithm, but classes and IDs only produce cascading effects in the HTML code and not in that of the CSS. Custom properties allow you to refer to the “the perfect color” #FF0000 as perfect-color, for example. Now, let us say you have a change of heart and feel that the perfect color is no longer red, but actually blue. You can then change the variable perfect-color and make it refer to another hexadecimal string, #0000FF. This change of reference will not only produce cascading effects in HTML, but also inside CSS — making it possible for you to change the visual appearance of all classes, IDs, and elements that uses your variable perfect-color — in one single move.</p>
+		<iframe src="https://giphy.com/embed/3o7TKDMPKsakcn9NU4" width="480" height="271" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+	</div>
+</section>
+
+{{{footer}}}

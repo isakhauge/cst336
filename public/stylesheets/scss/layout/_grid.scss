@@ -1,5 +1,129 @@
+@import
+"../utilities/functions",
+"../utilities/mixins",
+"../utilities/variables";
+
 body{
 	margin: 0;
+	min-width: 100%;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+main{
+	display: flex;
+	@include flex-direction(column);
 	width: 100%;
 	height: 100%;
+}
+
+section{
+	@include all-width(100%);
+	position: relative;
+	overflow: hidden;
+	& > img{
+		position: absolute;
+		@include all-width(100%);
+		@include all-height(100%);
+		@include objet-fit(cover);
+		@include object-position(center center);
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+}
+
+
+// ** Init. horizontal content margin **
+$margin_hz: get('content.margin.left') + get('content.margin.right');
+
+
+.container{
+	position: relative;
+	margin: 0 auto;
+	& > *:not(*.row){
+		margin:
+			get('content.margin.top')
+			get('content.margin.right')
+			get('content.margin.bottom')
+			get('content.margin.left')
+		;
+	}
+}
+
+.row{
+	position: relative;
+	width: calc(100% - #{$margin_hz/2});
+	margin: 0 $margin_hz/4;
+	display: flex;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	@include justify-content(space-between);
+	.col{
+		position: relative;
+		margin: $margin_hz/4;
+		@include flex-basis(0);
+		@include flex-grow(1);
+	}
+}
+
+
+// ** Init. display resolution breakpoints **
+$res_desktop: get('root.display.resolution.desktop');
+$res_desktop_sm: get('root.display.resolution.desktop-sm');
+$res_tablet: get('root.display.resolution.tablet');
+$res_mobile: get('root.display.resolution.mobile');
+
+
+// ** Init. media queries **
+$mq_desktop: 'only screen and (min-width: #{$res_desktop_sm + 1})';
+$mq_desktop_sm: 'only screen and (min-width: #{$res_tablet + 1}) and (max-width: #{$res_desktop_sm})';
+$mq_tablet: 'only screen and (min-width: #{$res_mobile + 1}) and (max-width: #{$res_tablet})';
+$mq_mobile: 'only screen and (min-width: 0px) and (max-width: #{$res_mobile})';
+
+
+// ** Init. container max width **
+$mw_desktop: ($res_desktop - 100px);
+$mw_desktop_sm: ($res_desktop_sm - 100px);
+$mw_tablet: ($res_tablet - 100px);
+$mw_mobile: ($res_mobile - 100px);
+
+
+// ** Media queries **
+// Query: Mobile.
+@media #{$mq_mobile} {
+	.container, .nav-container{max-width: $mw_mobile;}
+	.row{@include flex-direction(column)}
+}
+
+// Query: Tablet.
+@media #{$mq_tablet} {
+	.container, .nav-container{max-width: $mw_tablet;}
+	.col:first-child:nth-last-child(1), .col:first-child:nth-last-child(1) ~ .col{width: calc(100% / 1 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(2), .col:first-child:nth-last-child(2) ~ .col{width: calc(100% / 1 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(3), .col:first-child:nth-last-child(3) ~ .col{width: calc(100% / 1 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(4), .col:first-child:nth-last-child(4) ~ .col{width: calc(100% / 1 - #{$margin_hz/4});}
+}
+
+// Query: Desktop (small).
+@media #{$mq_desktop_sm} {
+	.container, .nav-container{max-width: $mw_desktop_sm;}
+	.col:first-child:nth-last-child(1), .col:first-child:nth-last-child(1) ~ .col{width: calc(100% / 1 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(2), .col:first-child:nth-last-child(2) ~ .col{width: calc(100% / 2 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(3), .col:first-child:nth-last-child(3) ~ .col{width: calc(100% / 3 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(4), .col:first-child:nth-last-child(4) ~ .col{width: calc(100% / 3 - #{$margin_hz/4});}
+}
+
+// Query: Desktop.
+@media #{$mq_desktop} {
+	.container, .nav-container{max-width: $mw_desktop;}
+	.col:first-child:nth-last-child(1), .col:first-child:nth-last-child(1) ~ .col{width: calc(100% / 1 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(2), .col:first-child:nth-last-child(2) ~ .col{width: calc(100% / 2 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(3), .col:first-child:nth-last-child(3) ~ .col{width: calc(100% / 3 - #{$margin_hz/4});}
+	.col:first-child:nth-last-child(4), .col:first-child:nth-last-child(4) ~ .col{width: calc(100% / 4 - #{$margin_hz/4});}
+}
+
+img{
+	max-width: 100%;
+	max-height: 100%;
 }

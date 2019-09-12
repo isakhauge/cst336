@@ -19,6 +19,11 @@
 	align-items: $param;
 }
 
+@mixin flex-basis($param){
+	-webkit-flex-basis: $param;
+	flex-basis: $param;
+}
+
 @mixin flex-grow($param){
 	-webkit-flex-grow: $param;
 	flex-grow: $param;
@@ -132,4 +137,18 @@
 	-ms-transform: $param;
 	-o-transform: $param;
 	transform: $param;
+}
+
+
+
+
+// ** Image **
+@mixin objet-fit($param){
+	-o-object-fit: $param;
+	object-fit: $param;
+}
+
+@mixin object-position($param){
+	-o-object-position: $param;
+	object-position: $param;
 }

@@ -1,5 +1,42 @@
-$map: (
+$main: (
 	'index': 10px,
+
+	'root': (
+		'display': (
+			'resolution': (
+				'desktop': 1199px,
+				'desktop-sm': 991px,
+				'tablet': 768px,
+				'mobile': 575px,
+			),
+		),
+	),
+
+	'content': (
+		'margin': (
+			'top': 1rem,
+			'right': 2rem,
+			'bottom': 1rem,
+			'left': 2rem,
+		),
+	),
+
+	'color': (
+		'primary':      #007bff,
+		'secondary':    #6c757d,
+		'success':      #28a745,
+		'danger':       #dc3545,
+		'warning':      #ffc107,
+		'info':         #17a2b8,
+		'muted':        #6c757d,
+		'light':        #f8f9fa,
+		'dark':         #343a40,
+		'darker': 			#16181b,
+		'white':        white,
+		'transparent':  transparent,
+		'white-50':     rgba(255,255,255,.5),
+		'black-50':     rgba(0,0,0,.5)
+	),
 
 	// Themes:
 	'theme': (

@@ -24,17 +24,22 @@ nav a:hover{
 	transition: .9s;
 }
 
-main{position: relative}
+main{
+	position: relative;
+}
 
 #me, #welcomeText{
+	display: inline-block;
 	float: left;
 	position: relative;
-	width: 50%;
 	padding: 20px;
+	width: calc(50% - 40px);
+	margin: 0;
 }
 
 #me img{
 	width: 100%;
+	border-radius: 10px;
 }
 
 #welcomeText p{

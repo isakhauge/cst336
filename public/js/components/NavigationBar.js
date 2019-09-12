@@ -39,7 +39,7 @@ export class NavigationBar extends HTMLElement {
         const logoDefined = this.getAttribute(logoAttribute).length > 0;
         const logoAttributeExists = this.getAttribute(logoAttribute) !== null;
         if (logoAttributeExists && !logoDefined)
-            f.debug(this, 'Test');
+            this.setAttribute(NavigationBar.attributes().logo,'Undefined Brand')
     }
 
 

@@ -1,0 +1,61 @@
+@import
+"../utilities/functions",
+"../utilities/mixins",
+"../utilities/variables";
+
+nav{
+	position: relative;
+	height: 60px;
+	.container{
+		position: relative;
+	}
+}
+
+.navbar{
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	height: 60px;
+	width: calc(100% - #{get('content.margin.left') + get('content.margin.right')});
+	display: flex;
+	@include justify-content(space-between);
+	@include align-items(center);
+	background-color: white;
+	z-index: 9;
+
+	& > .brand{
+		font-size: 1.2em;
+		font-weight: 700;
+	}
+
+	& [active]{
+		color: get('color.dark');
+		font-weight: 500;
+	}
+}
+
+.nav-menu{
+	a:not(:first-child){
+		margin-left: 1em;
+	}
+	& > a{
+		font-size: 0.9em;
+	}
+}
+
+.navbar::before{
+	height: 60px;
+	content: "";
+	width: 200vw;
+	background-color: inherit;
+	top: 0;
+	left: -50vw;
+	position: absolute;
+	z-index: -1;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+.navbar-sticky{
+	position: fixed;
+	top: 0;
+	left: 0;
+}

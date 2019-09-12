@@ -1,0 +1,19 @@
+@import
+"../utilities/functions",
+"../utilities/mixins",
+"../utilities/variables";
+
+.code{
+	font-family: 'Roboto Mono', monospace !important;
+	font-size: 0.75em;
+}
+
+.code-box{
+	color: get('color.light');
+	background-color: get('color.dark');
+	padding: 1rem;
+	border-radius: 0.2rem;
+	box-shadow: 0 0.2rem 1rem rgba(0,0,0,0.2);
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}

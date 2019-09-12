@@ -1,0 +1,59 @@
+{{{navbar}}}
+
+<section class="h20" style="height: 300px">
+	<img src="/images/project1/banner.png" alt="Banner image">
+</section>
+
+<section class="py-2">
+	<div class="container">
+		<h2>Examples of application</h2>
+		<p>In the syntax section I promised to show you how to create variables without constraining applicability (i.e. global variables). Simply use the <code>:root</code> pseudo selector.</p>
+	</div>
+</section>
+
+<section class="py-2 bg-light bx-dark">
+	<div class="container">
+		<div class="quote">
+			<span class="quote-text">The <code>:root</code> CSS pseudo-class matches the root element of a tree representing the document. In HTML, <code>:root</code> represents the <code>&lt;html&gt;</code> element and is identical to the selector html, except that its specificity is higher.</span>
+			<span class="quote-source"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">Mozilla (MDN Web Docs)</a>, last accessed 2018.09.25</span>
+		</div>
+	</div>
+</section>
+
+<section class="py-2">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<p>Ok, let us create three variables. One default font size value, one default shadow value, and one default color value.</p>
+				<div class="code code-box">
+					:root{<br>
+					--font-size: 14px;<br>
+					--shadow: 0 2px 2px rgba(0,0,0,0.2);<br>
+					--dark-color: #333333;<br>
+					}
+				</div>
+			</div>
+			<div class="col">
+				<p>To apply these variables to elements, classes, or IDs; we do the following.</p>
+				<div class="code code-box">
+					p{<br>
+					font-size: var(--font-size);<br>
+					}<br>
+					.card{<br>
+					box-shadow: var(--shadow);<br>
+					}<br>
+					.dark{<br>
+					color: var(--dark-color);<br>
+					}
+				</div>
+			</div>
+		</div>
+		<iframe src="https://giphy.com/embed/zcCGBRQshGdt6" width="480" height="308" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/reaction-office-space-that-was-easy-zcCGBRQshGdt6">via GIPHY</a></p>
+		<p>Now we are getting somewhere. The next step is to use variables inside variables. This is really practical when creating responsive design. Let us say that you need to create a website where you can easily increase or decrease the size of all elements, proportionally, by only changing one single variable.</p>
+		<script src="https://gist.github.com/isakhauge/9e62b4a4061f4bd1bb78291c7fc4192f.js"></script>
+		<p>If I only change the variable <code>--index</code>, everything else changes proportionally. If you are not familiar with the relative units <code>rem</code> and <code>em</code>, I will give you a super short explanation.<br><br><b>rem:</b> Relative to the root element’s font size.<br> <b>em:</b> Relative to the current element’s font size.</p>
+		<i>The number is the coefficient. If 1rem unit is 10px, 2.4rem is 24px.</i>
+	</div>
+</section>
+
+{{{footer}}}

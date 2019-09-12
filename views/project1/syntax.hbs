@@ -1,0 +1,54 @@
+{{{navbar}}}
+
+<section class="h20" style="height: 300px">
+	<img src="/images/project1/banner.png" alt="Banner image">
+</section>
+
+<section class="py-2">
+	<div class="container">
+		<h2>Syntax</h2>
+		<div class="code code-box">
+			element { --perfect-color : #0000FF ; }
+		</div>
+		<p>We can divide the code above in three sections.</p>
+		<ol>
+			<li>Selector (constraint of applicability).</li>
+			<li>The variable.</li>
+			<li>The value.</li>
+		</ol>
+	</div>
+	<div class="container mt-3">
+		<h3>Selector</h3>
+		<div class="row">
+			<div class="col">
+				<p>First we have the selector. You can target whatever HTML element you want, but have in mind, using a specific element constrains the applicability of the variable. Let me give you an example.</p>
+				<div class="code code-box">
+					section{ --perfect-color: #FF0000; }<br>
+					div{ --perfect-color: #0000FF; }
+				</div>
+				<p>Above, we have two different custom properties that can simultaneously coexist in the CSS code without having any conflict at all, even though they have the exact same variable name. This is great if you want to utilize a contextual naming convention where the text color dark is to be slightly different from the background color dark. See example below.</p>
+				<p><b>Text color:</b><br><code>h1,h2,h3,h4,h5,h6,p{ --dark: #555555; }</code></p>
+			</div>
+			<div class="col">
+				<p><b>Background color:</b><br><code>section,div{ --dark: #333333; }</code>.</p>
+				<p>When you declare an element for the variable to affect, like this: <code>element{*}</code>, you also constrain the applicability of the variable to only work with such an element. In the code examples above, we say that elements like <code>&lt;section&gt;</code> and <code>&lt;div&gt;</code> shall have a variable <code>--dark</code> , with the assigned value of <code>#333333</code> . If you try to use said variable with an <code>&lt;h1&gt;</code> element, you are actually referring to the other <code>--dark</code> variable with the value <code>#555555</code>.</p>
+				<p>In the next section, I will show you how to create variables you can use on any element, class, or ID you may wish.</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h3>Variable</h3>
+				<p>Now, the easy part. You can call the variable almost anything you want as long as you prepend the variable name with a double hyphenated prefix like the following: <code>--your-variable-name</code>, <code>--yourVariableName</code>.</p>
+			</div>
+			<div class="col">
+				<h3>Value</h3>
+				<p>Assigning the variable name with a value is basic. In Java, we initialize variables by using the assignment operator <code>=</code>. In CSS, we use an equivalent, colon <code>:</code>. If you want to create a standard size for <code>border-radius</code>, you can simply say <code>--standard-rad: 3px;</code> and refer to it by <code>border-radius: var(--standard-rad);</code>.</p>
+				<p>The important thing to have in mind is “legal values”. Yo cannot use this value <code>--dark: #333333;</code> when defining the font size of an element for example; like this <code>font-size: var(--dark);</code> , but you knew that. 👈👈😉</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+{{{footer}}}
