@@ -47,7 +47,7 @@ router.get('/portfolio/contact', function(req, res, next) {
 const project1 = {
   title: 'CST 336: Project 1',
   css: '/stylesheets/style.css',
-  fonts: 'https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500,700|Roboto:100,300,400,500,700,900&display=swap',
+  fonts: 'https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500,700%7CRoboto:100,300,400,500,700,900&display=swap',
   navbar: '<nav> <div class="container"> <div class="navbar navbar-sticky"> <div class="brand"> Isak Hauge </div> <div class="nav-menu-container"> <div class="nav-menu"> <a href="/project1">Summary</a> <a href="/project1/custom-properties">CSS Custom Properties</a> <a href="/project1/syntax">Syntax</a> <a href="/project1/examples">Examples</a> <a href="/project1/compatibility">Compatibility</a> </div> <div class="hamburger"> <div class="cheese"></div> <div class="patty"></div> <div class="salad"></div> </div> </div> </div> </div> </nav>',
   banner: '<section style="height: 300px"> <h1 class="text-transparent">Tutorial - CSS Variables for Beginners</h1> <img src="/images/project1/banner.png" alt="Banner image"> </section>',
   footer: '<footer class="bg-darker"> <section> <div class="container"> <p class="text-white text-center small"> CST 336 - Internet Programming<br>The content on this website is written by Isak Hauge<br>&copy;<span id="year"></span>. All rights reserved.</p> <script>window.onload=function(){document.getElementById("year").innerText = new Date().getFullYear().toString();}</script> </div> </section> </footer>',
