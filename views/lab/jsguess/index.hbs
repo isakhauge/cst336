@@ -21,7 +21,7 @@
 			<div class="col-md">
 				<form action="">
 					<div class="form-group">
-						<label for="number" class="text-muted">Enter a guess</label>
+						<label for="number" class="text-muted small">Enter a guess</label>
 						<input type="text" id="number" name="number" class="form-control">
 					</div>
 					<div class="form-group">
@@ -35,23 +35,23 @@
 				</form>
 			</div>
 			<div class="col-md">
-				<div id="info" class="alert alert-primary" role="alert">
-					<h4 class="alert-heading">How to play the game</h4>
-					<ul>
-						<li>Guess an integer number between 1 and 99.</li>
-						<li>Click the submit button and check the game log to see if your guess was correct.</li>
-						<li>If your guess was correct or if you would like another shot, please click the reset button.</li>
-					</ul>
-					<hr>
-					<p class="mb-0">Best of lucks!</p>
-				</div>
+				<label for="log" class="text-muted small">Game log</label>
+				<div id="log" name="log" class="bg-light p-2 border rounded"></div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
-		<hr>
-		<label for="log" class="small text-muted">Game log:</label>
-		<div id="log" name="log" class="bg-light p-4 border rounded"></div>
+		<hr class="my-5">
+		<div id="info" class="alert alert-primary" role="alert">
+			<h4 class="alert-heading">How to play the game</h4>
+			<ul>
+				<li>Guess an integer number between 1 and 99.</li>
+				<li>Click the submit button and check the game log to see if your guess was correct.</li>
+				<li>If your guess was correct or if you would like another shot, please click the reset button.</li>
+			</ul>
+			<hr>
+			<p class="mb-0">Best of lucks!</p>
+		</div>
 	</div>
 </section>
 <style>
@@ -64,7 +64,16 @@
 		$('#guess-count').css({
 			'font-size': '12px',
 			'text-transform': 'uppercase',
-			'font-weight': '700'
+			'font-weight': '700',
+		});
+	});
+	$(document).ready(function(){
+		$('#log').css({
+			'height': '150px',
+			'max-height': '150px',
+			'overflow-y': 'scroll',
+			'font-size': '12px',
+			'font-family': 'monospace',
 		});
 	});
 </script>
@@ -89,7 +98,7 @@
 		x.cout('Initial random number: ' + randomNumber, 'primary');
 
 		const gameOver = () => {
-			TEXTAREA_LOG.innerHTML += '<p class="font-weight-bold text-danger">GAME OVER: You Lost!<p>';
+			TEXTAREA_LOG.innerHTML = '<p class="font-weight-bold text-danger">GAME OVER: You Lost!<p>' + TEXTAREA_LOG.innerHTML;
 			TEXTAREA_LOG.setAttribute('class', 'p-4 border rounded text-white');
 			INPUT_NUMBER.value = '';
 			BUTTON_SUBMIT.disabled = true;
@@ -124,7 +133,7 @@
 						gameOver();
 					}
 				} else {
-					TEXTAREA_LOG.innerHTML += '<p class="text-secondary m-0">Invalid input value. The input value should be between 1 and 99</p>';
+					TEXTAREA_LOG.innerHTML = '<p class="text-secondary m-0">Invalid input value. The input value should be between 1 and 99</p>' + TEXTAREA_LOG.innerHTML;
 				}
 			} else {
 				gameOver();
@@ -147,7 +156,7 @@
 
 		function updateGameLog(answer, correctAnswer){
 			if (answer === correctAnswer){
-				TEXTAREA_LOG.innerHTML += '<p class="font-weight-bold m-0 text-success">CORRECT: You guessed ' + answer + ' which is the correct answer!</p>';
+				TEXTAREA_LOG.innerHTML = '<p class="font-weight-bold m-0 text-success">[CORRECT]: ' + answer + ' is the correct answer!</p>' + TEXTAREA_LOG.innerHTML;
 				randomNumber = newRandom();
 				BUTTON_SUBMIT.disabled = true;
 				TEXT_WIN_COUNT.innerText = (++wins).toString();
@@ -155,10 +164,10 @@
 				x.cout('YOU WON!', 'success');
 			}
 			else {
-				TEXTAREA_LOG.innerHTML +=
-					'<p class="text-danger m-0"> #' + guesses + ' WRONG: You guessed ' + answer +
-					', but it was too ' + ((answer < correctAnswer) ? 'low' : 'high') +
-					'</p>';
+				TEXTAREA_LOG.innerHTML =
+					'<p class="text-danger m-0"> #' + guesses + ' [WRONG]: ' + answer +
+					'. Too ' + ((answer < correctAnswer) ? 'low.' : 'high.') +
+					'</p>' + TEXTAREA_LOG.innerHTML;
 			}
 		}
 
