@@ -31,7 +31,7 @@
 					<div class="progress">
 						<div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0"></div>
 					</div>
-					<p id="guess-count" class="text-center small mt-2">7</p>
+					<p id="guess-count" class="text-center small mt-2 text-secondary">7</p>
 				</form>
 			</div>
 			<div class="col-md">
@@ -56,9 +56,18 @@
 </section>
 <style>
 	#guess-count::after{
-		content: ' guesses left'
+		content: '  guesses left';
 	}
 </style>
+<script>
+	$(document).ready(function(){
+		$('#guess-count').css({
+			'font-size': '12px',
+			'text-transform': 'uppercase',
+			'font-weight': '700'
+		});
+	});
+</script>
 <script type="module">
 	import * as x from '/js/functions/functions.js';
 	window.onload = () => {
@@ -86,7 +95,7 @@
 			BUTTON_SUBMIT.disabled = true;
 			x.cout('GAME OVER', 'danger');
 			TEXT_LOSS_COUNT.innerText = (++losses).toString();
-			BUTTON_LOSS_COUNT.setAttribute('class', 'btn btn-danger');
+			BUTTON_LOSS_COUNT.setAttribute('class', 'btn btn-danger m-1');
 		};
 
 		const INPUT_NUMBER = get('number');
@@ -142,7 +151,8 @@
 				randomNumber = newRandom();
 				BUTTON_SUBMIT.disabled = true;
 				TEXT_WIN_COUNT.innerText = (++wins).toString();
-				BUTTON_WIN_COUNT.setAttribute('class', 'btn btn-success');
+				BUTTON_WIN_COUNT.setAttribute('class', 'btn btn-success m-1');
+				x.cout('YOU WON!', 'success');
 			}
 			else {
 				TEXTAREA_LOG.innerHTML +=

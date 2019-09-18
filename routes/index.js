@@ -8,6 +8,7 @@ const bootstrap = '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.c
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'CST 238',
+    css: bootstrap,
   });
 });
 
