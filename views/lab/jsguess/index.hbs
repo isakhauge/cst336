@@ -1,0 +1,135 @@
+<section class="py-5 bg-primary">
+	<div class="container text-center text-white">
+		<h1>
+			<span class="small">A JavaScript Game</span><br>
+			Guess an integer number
+		</h1>
+		<h2 class="h5 font-weight-light mt-4">Created by Isak Hauge and Anders Bærø</h2>
+	</div>
+</section>
+<section class="py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<form action="">
+					<div class="form-group">
+						<label for="number" class="text-muted">Enter a guess</label>
+						<input type="text" id="number" name="number" class="form-control">
+					</div>
+					<div class="form-group">
+						<button type="button" id="btn-submit" name="btn-submit" class="btn btn-primary">Submit guess</button>
+						<button type="button" id="btn-reset" name="btn-reset" class="btn btn-secondary">Reset</button>
+					</div>
+					<div class="progress">
+						<div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0"></div>
+					</div>
+					<p id="guess-count" class="text-center small mt-2">7</p>
+				</form>
+			</div>
+			<div class="col">
+				<div id="info" class="alert alert-primary" role="alert">
+					<h4 class="alert-heading">How to play the game</h4>
+					<ul>
+						<li>Guess an integer number between 0 and 100.</li>
+						<li>Click the submit button and check the game log to see if your guess was correct.</li>
+						<li>If your guess was correct or if you would like another shot, please click the reset button.</li>
+					</ul>
+					<hr>
+					<p class="mb-0">Best of lucks!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<label for="log" class="small text-muted">Game log:</label>
+		<div class="input-group">
+			<textarea id="log" name="log" class="form-control" rows="10" disabled></textarea>
+		</div>
+	</div>
+</section>
+<style>
+	#guess-count::after{
+		content: ' guesses left'
+	}
+</style>
+<script type="module">
+	import * as x from '/js/functions/functions.js';
+
+	const get = (id) => {return document.getElementById(id)};
+	const newRandom = () => Math.round(Math.random() * 100);
+	const changeProgress = (value) => {
+		const PB = get('progress-bar');
+		PB.style.width = value + '%';
+		PB.setAttribute('aria-valuenow', value);
+		if (value === 100){
+			PB.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated bg-danger');
+		} else PB.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated');
+	};
+	const gameOver = () => {
+		TEXTAREA_LOG.innerHTML += 'GAME OVER' + '&#13;&#10;' + 'Try again!';
+		TEXTAREA_LOG.setAttribute('class', 'form-control bg-danger text-white');
+		INPUT_NUMBER.value = '';
+		BUTTON_SUBMIT.disabled = true;
+		x.cout('GAME OVER', 'danger');
+	};
+
+	const INPUT_NUMBER = get('number');
+	const BUTTON_SUBMIT = get('btn-submit');
+	const BUTTON_RESET = get('btn-reset');
+	const DIV_ALERT = get('info');
+	const TEXTAREA_LOG = get('log');
+	const MAX_GUESSES = 7;
+
+	let guesses = 0;
+	let randomNumber = newRandom();
+	x.cout('Initial random number: ' + randomNumber, 'primary');
+
+	function ev_button_submit_onclick(e){
+		guesses += 1;
+		if (guesses <= MAX_GUESSES){
+			const guess = parseInt(INPUT_NUMBER.value);
+			updateGameLog(guess, randomNumber);
+			changeProgress(guesses/MAX_GUESSES*100);
+			x.cout('Guess nr. ' + guesses + ': ' + guess + ' | Correct answer: ' + randomNumber);
+			get('guess-count').innerText = (MAX_GUESSES - guesses).toString();
+			if (MAX_GUESSES === guesses){
+				changeProgress(guesses/MAX_GUESSES*100);
+				get('guess-count').innerText = (MAX_GUESSES - guesses).toString();
+				gameOver();
+			}
+		} else {
+			gameOver();
+		}
+		INPUT_NUMBER.value = '';
+	}
+
+	function ev_button_reset_onclick(e){
+		x.cout('RESET GAME', 'warning');
+		x.cout('New random number: ' + newRandom(), 'success');
+		TEXTAREA_LOG.innerText = '';
+		TEXTAREA_LOG.setAttribute('class', 'form-control');
+		INPUT_NUMBER.value = '';
+		BUTTON_SUBMIT.disabled = false;
+		changeProgress(0);
+		get('guess-count').innerText = MAX_GUESSES.toString();
+		guesses = 0;
+	}
+
+	function updateGameLog(answer, correctAnswer){
+		if (answer === correctAnswer){
+			TEXTAREA_LOG.innerText += 'CORRECT: You guessed ' + answer + ' which is the correct answer!';
+			randomNumber = newRandom();
+			TEXTAREA_LOG.classList.add('bg-success', 'text-white');
+			BUTTON_SUBMIT.disabled = true;
+		}
+		else {
+			TEXTAREA_LOG.innerHTML +=
+				'#' + guesses + ' WRONG: You guessed ' + answer +
+				', but it was too ' + ((answer < correctAnswer) ? 'low' : 'high') +
+				'&#13;&#10;';
+		}
+	}
+
+	BUTTON_SUBMIT.addEventListener('click', ev_button_submit_onclick);
+	BUTTON_RESET.addEventListener('click', ev_button_reset_onclick);
+</script>
