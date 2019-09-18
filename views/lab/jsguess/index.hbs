@@ -61,96 +61,98 @@
 </style>
 <script type="module">
 	import * as x from '/js/functions/functions.js';
+	window.onload = () => {
 
-	const get = (id) => {return document.getElementById(id)};
-	const newRandom = () => Math.round(Math.random() * 100);
-	const changeProgress = (value) => {
-		const PB = get('progress-bar');
-		PB.style.width = value + '%';
-		PB.setAttribute('aria-valuenow', value);
-		if (value === 100){
-			PB.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated bg-danger');
-		} else PB.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated');
-	};
+		const get = (id) => {return document.getElementById(id)};
+		const newRandom = () => Math.round(Math.random() * 100);
+		const changeProgress = (value) => {
+			const PB = get('progress-bar');
+			PB.style.width = value + '%';
+			PB.setAttribute('aria-valuenow', value);
+			if (value === 100){
+				PB.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated bg-danger');
+			} else PB.setAttribute('class', 'progress-bar progress-bar-striped progress-bar-animated');
+		};
 
-	let guesses = 0;
-	let wins = 0, losses = 0;
-	let randomNumber = newRandom();
-	x.cout('Initial random number: ' + randomNumber, 'primary');
+		let guesses = 0;
+		let wins = 0, losses = 0;
+		let randomNumber = newRandom();
+		x.cout('Initial random number: ' + randomNumber, 'primary');
 
-	const gameOver = () => {
-		TEXTAREA_LOG.innerHTML += '<p class="font-weight-bold text-danger">GAME OVER: You Lost!<p>';
-		TEXTAREA_LOG.setAttribute('class', 'p-4 border rounded text-white');
-		INPUT_NUMBER.value = '';
-		BUTTON_SUBMIT.disabled = true;
-		x.cout('GAME OVER', 'danger');
-		TEXT_LOSS_COUNT.innerText = (++losses).toString();
-		BUTTON_LOSS_COUNT.setAttribute('class', 'btn btn-danger');
-	};
+		const gameOver = () => {
+			TEXTAREA_LOG.innerHTML += '<p class="font-weight-bold text-danger">GAME OVER: You Lost!<p>';
+			TEXTAREA_LOG.setAttribute('class', 'p-4 border rounded text-white');
+			INPUT_NUMBER.value = '';
+			BUTTON_SUBMIT.disabled = true;
+			x.cout('GAME OVER', 'danger');
+			TEXT_LOSS_COUNT.innerText = (++losses).toString();
+			BUTTON_LOSS_COUNT.setAttribute('class', 'btn btn-danger');
+		};
 
-	const INPUT_NUMBER = get('number');
-	const BUTTON_SUBMIT = get('btn-submit');
-	const BUTTON_RESET = get('btn-reset');
-	const DIV_ALERT = get('info');
-	const TEXTAREA_LOG = get('log');
-	const BUTTON_WIN_COUNT = get('btn-win-count');
-	const TEXT_WIN_COUNT = get('txt-win-count');
-	const BUTTON_LOSS_COUNT = get('btn-loss-count');
-	const TEXT_LOSS_COUNT = get('txt-loss-count');
-	const MAX_GUESSES = 7;
+		const INPUT_NUMBER = get('number');
+		const BUTTON_SUBMIT = get('btn-submit');
+		const BUTTON_RESET = get('btn-reset');
+		const DIV_ALERT = get('info');
+		const TEXTAREA_LOG = get('log');
+		const BUTTON_WIN_COUNT = get('btn-win-count');
+		const TEXT_WIN_COUNT = get('txt-win-count');
+		const BUTTON_LOSS_COUNT = get('btn-loss-count');
+		const TEXT_LOSS_COUNT = get('txt-loss-count');
+		const MAX_GUESSES = 7;
 
-	function ev_button_submit_onclick(e){
-		if (guesses <= MAX_GUESSES){
-			const guess = parseInt(INPUT_NUMBER.value);
-			if (guess < 100 && guess > 0){
-				guesses += 1;
-				updateGameLog(guess, randomNumber);
-				changeProgress(guesses/MAX_GUESSES*100);
-				x.cout('Guess nr. ' + guesses + ': ' + guess + ' | Correct answer: ' + randomNumber);
-				get('guess-count').innerText = (MAX_GUESSES - guesses).toString();
-				if (MAX_GUESSES === guesses){
+		function ev_button_submit_onclick(e){
+			if (guesses <= MAX_GUESSES){
+				const guess = parseInt(INPUT_NUMBER.value);
+				if (guess < 100 && guess > 0){
+					guesses += 1;
+					updateGameLog(guess, randomNumber);
 					changeProgress(guesses/MAX_GUESSES*100);
+					x.cout('Guess nr. ' + guesses + ': ' + guess + ' | Correct answer: ' + randomNumber);
 					get('guess-count').innerText = (MAX_GUESSES - guesses).toString();
-					gameOver();
+					if (MAX_GUESSES === guesses){
+						changeProgress(guesses/MAX_GUESSES*100);
+						get('guess-count').innerText = (MAX_GUESSES - guesses).toString();
+						gameOver();
+					}
+				} else {
+					TEXTAREA_LOG.innerHTML += '<p class="text-secondary m-0">Invalid input value. The input value should be between 1 and 99</p>';
 				}
 			} else {
-				TEXTAREA_LOG.innerHTML += '<p class="text-secondary m-0">Invalid input value. The input value should be between 1 and 99</p>';
+				gameOver();
 			}
-		} else {
-			gameOver();
+			INPUT_NUMBER.value = '';
 		}
-		INPUT_NUMBER.value = '';
-	}
 
-	function ev_button_reset_onclick(e){
-		randomNumber = newRandom();
-		x.cout('RESET GAME', 'warning');
-		x.cout('New random number: ' + randomNumber, 'success');
-		TEXTAREA_LOG.innerText = '';
-		TEXTAREA_LOG.setAttribute('class', 'bg-light p-4 border rounded');
-		INPUT_NUMBER.value = '';
-		BUTTON_SUBMIT.disabled = false;
-		changeProgress(0);
-		get('guess-count').innerText = MAX_GUESSES.toString();
-		guesses = 0;
-	}
-
-	function updateGameLog(answer, correctAnswer){
-		if (answer === correctAnswer){
-			TEXTAREA_LOG.innerHTML += '<p class="font-weight-bold m-0 text-success">CORRECT: You guessed ' + answer + ' which is the correct answer!</p>';
+		function ev_button_reset_onclick(e){
 			randomNumber = newRandom();
-			BUTTON_SUBMIT.disabled = true;
-			TEXT_WIN_COUNT.innerText = (++wins).toString();
-			BUTTON_WIN_COUNT.setAttribute('class', 'btn btn-success');
+			x.cout('RESET GAME', 'warning');
+			x.cout('New random number: ' + randomNumber, 'success');
+			TEXTAREA_LOG.innerText = '';
+			TEXTAREA_LOG.setAttribute('class', 'bg-light p-4 border rounded');
+			INPUT_NUMBER.value = '';
+			BUTTON_SUBMIT.disabled = false;
+			changeProgress(0);
+			get('guess-count').innerText = MAX_GUESSES.toString();
+			guesses = 0;
 		}
-		else {
-			TEXTAREA_LOG.innerHTML +=
-				'<p class="text-danger m-0"> #' + guesses + ' WRONG: You guessed ' + answer +
-				', but it was too ' + ((answer < correctAnswer) ? 'low' : 'high') +
-				'</p>';
-		}
-	}
 
-	BUTTON_SUBMIT.addEventListener('click', ev_button_submit_onclick);
-	BUTTON_RESET.addEventListener('click', ev_button_reset_onclick);
+		function updateGameLog(answer, correctAnswer){
+			if (answer === correctAnswer){
+				TEXTAREA_LOG.innerHTML += '<p class="font-weight-bold m-0 text-success">CORRECT: You guessed ' + answer + ' which is the correct answer!</p>';
+				randomNumber = newRandom();
+				BUTTON_SUBMIT.disabled = true;
+				TEXT_WIN_COUNT.innerText = (++wins).toString();
+				BUTTON_WIN_COUNT.setAttribute('class', 'btn btn-success');
+			}
+			else {
+				TEXTAREA_LOG.innerHTML +=
+					'<p class="text-danger m-0"> #' + guesses + ' WRONG: You guessed ' + answer +
+					', but it was too ' + ((answer < correctAnswer) ? 'low' : 'high') +
+					'</p>';
+			}
+		}
+
+		BUTTON_SUBMIT.addEventListener('click', ev_button_submit_onclick);
+		BUTTON_RESET.addEventListener('click', ev_button_reset_onclick);
+	};
 </script>

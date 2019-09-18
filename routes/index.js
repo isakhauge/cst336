@@ -38,6 +38,7 @@ router.get('/lab/jsguess', function (req, res, next) {
   res.render('lab/jsguess/index', {
     title: 'CST 238: Lab, JS guessing numbers',
     css: bootstrap,
+    script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
   });
 });
 
