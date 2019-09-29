@@ -294,7 +294,11 @@
 				scoreHistory.innerText = gameScore;
 			}
 
+			if (gameScore === 100)
+				alert('Contratulations! 100 points!');
+
 			totalScore.innerText = gameScore;
+			gameScore = 0;
 		});
 	});
 </script>
