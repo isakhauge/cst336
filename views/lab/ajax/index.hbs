@@ -1,0 +1,89 @@
+<section class="py-5 bg-primary">
+	<div class="container">
+		<h1 class="text-white">AJAX Sign Up Form</h1>
+	</div>
+</section>
+<section class="py-5">
+	<div class="container">
+		<form>
+			<fieldset>
+				<legend>Sign Up</legend>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">First Name:</label>
+					<input class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Last Name:</label>
+					<input class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Email:</label>
+					<input class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Phone Number:</label>
+					<input class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Zip Code:</label>
+					<input id="zip" class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">City:</label>
+					<input class="form-control col-sm-10" type="text" disabled>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Latitude:</label>
+					<input class="form-control col-sm-10" type="text" disabled>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Longitude:</label>
+					<input class="form-control col-sm-10" type="text" disabled>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">State:</label>
+					<input class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Select a County:</label>
+					<select class="form-control col-sm-10"></select>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Desired Username:</label>
+					<input class="form-control col-sm-10" type="text">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Password:</label>
+					<input class="form-control col-sm-10" type="password">
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Type Password Again:</label>
+					<input class="form-control col-sm-10" type="password">
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary" type="submit" value="Sign up!">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>
+<script type="module">
+	import * as x from "/js/functions/functions.js";
+	const inputZip = document.getElementById('zip');
+
+	const ev_zip_onInput = {
+		type: 'input',
+		listener: function(e) {
+			const elem = e.target;
+			if (elem.value.length === 5)
+				x.ajaxFetch(elem.value, 'https://cst336.herokuapp.com/projects/api/cityInfoAPI.php?zip=', function (raw) {
+					if (x.isJSON(raw)){
+						const jsonObj = JSON.parse(raw);
+						console.log(jsonObj);
+					}
+				});
+		},
+	};
+
+	inputZip.addEventListener(ev_zip_onInput.type,ev_zip_onInput.listener);
+</script>

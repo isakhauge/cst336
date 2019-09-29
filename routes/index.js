@@ -43,6 +43,32 @@ router.get('/lab/jsguess', function (req, res, next) {
   });
 });
 
+// AJAX
+router.get('/lab/ajax', function (req, res, next) {
+	res.render('lab/ajax/index', {
+		title: 'CST 238: Lab, AJAX',
+		css: bootstrap,
+		script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+	});
+});
+
+// Quiz
+router.get('/lab/us-geo-quiz', function (req, res, next) {
+  res.render('lab/us-geo-quiz/index', {
+    title: 'CST 238: Lab, JS Geography Quiz',
+    css: bootstrap,
+    script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+  });
+});
+
+// Quiz
+router.get('/lab/us-geo-quiz', function (req, res, next) {
+  res.render('lab/us-geo-quiz/index', {
+    title: 'CST 238: Lab, JS Geography Quiz',
+    css: bootstrap,
+    script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+  });
+});
 
 
 

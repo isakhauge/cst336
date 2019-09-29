@@ -136,3 +136,107 @@ export function debug(object, message, color=''){
 		'border: 3px solid ' + combo.border + ';'
 	);
 }
+
+
+/**
+ * AJAX Fetch
+ *
+ * @author Isak Hauge
+ *
+ * @param {string} searchValue - The search value.
+ * @param {string} url - The path and filename of the PHP AJAX handler.
+ * @param {function} callback - A callback function.
+ * */
+export function ajaxFetch(searchValue, url, callback){
+
+	// Instantiate AJAX object.
+	const AJAX = new XMLHttpRequest();
+
+	// Init. on-ready event handler.
+	AJAX.onreadystatechange = function () {
+
+		// ? If data was successfully received.
+		if (this.readyState === 4 && this.status === 200) {
+
+			// Send debug message to console.
+			console.log('AJAX request initiated.');
+
+			// Callback.
+			callback(this.responseText);
+
+		}
+
+	};
+
+	// Open connection to PHP file.
+	AJAX.open('GET', url + searchValue, true);
+
+	// Send data through GET API.
+	AJAX.send();
+
+}
+
+
+/**
+ * AJAX Send JSON
+ * */
+export function ajaxJSON(jsonObject, url, callback){
+
+	const xhr = new XMLHttpRequest();
+
+	xhr.onreadystatechange = function() {
+		if (this.readyState === 4 && this.status === 200){
+			callback(this.responseText);
+		}
+	};
+
+	xhr.open('POST', url, true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify(jsonObject));
+
+}
+
+
+/**
+ * Is JSON.
+ *
+ * @description This function will return a boolean value based on whether the given string
+ * data is JSON format compliant.
+ *
+ * @param {string} data - The data string to be analyzed.
+ * @returns {boolean}
+ * */
+export function isJSON(data) {
+
+	try {
+
+		JSON.parse(data);
+		return true;
+
+	} catch (e) {
+
+		return false;
+
+	}
+
+}
+
+
+/**
+ * Get
+ * @param selector
+ * @returns {HTMLElement}
+ */
+export function get(selector) {
+	return document.querySelector(selector);
+}
+
+
+/**
+ * Get All
+ * @param selector
+ * @returns {NodeListOf<HTMLElementTagNameMap[*]>}
+ */
+export function getAll(selector) {
+	return document.querySelectorAll(selector);
+}
