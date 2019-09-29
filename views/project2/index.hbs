@@ -1,0 +1,110 @@
+<section class="bg-primary py-2">
+	<div class="container">
+		<h1 class="text-white">Shopping Cart App</h1>
+	</div>
+</section>
+<section class="py-2">
+	<div class="container">
+		<h2>Products</h2>
+		<div>
+			<product-list>
+				<product data-name="iPhone 11" data-price="1000">
+					<div class="product-name">iPhone 11</div>
+					<div class="product-price">1000</div>
+					<div class="product-tax">20</div>
+					<div class="product-add-button"><button class="btn-primary" id="add-iphone">Add</button></div>
+				</product>
+				<product data-name="Google Pixel 4" data-price="1000">
+					<div class="product-name">Google Pixel 4</div>
+					<div class="product-price">1350</div>
+					<div class="product-tax">20</div>
+					<div class="product-add-button"><button class="btn btn-secondary" id="add-pixel">Add</button></div>
+				</product>
+			</product-list>
+		</div>
+	</div>
+</section>
+<section class="py-2">
+	<div class="container">
+		<h2>Shopping Cart</h2>
+		<div>
+			<shopping-cart>
+				<product-item id="iphone" hidden>
+					<div class="product-name">iPhone 11</div>
+					<div class="product-quantity">0</div>
+					<div class="product-price-total">0</div>
+					<div class="product-tax">20</div>
+					<div class="product-remove-button"><button class="btn btn-secondary" id="remove-iphone">Remove</button></div>
+				</product-item>
+				<product-item id="pixel" hidden>
+					<div class="product-name">Google Pixel 4</div>
+					<div class="product-quantity">0</div>
+					<div class="product-price-total">0</div>
+					<div class="product-tax">20</div>
+					<div class="product-remove-button"><button class="btn btn-secondary" id="remove-pixel">Remove</button></div>
+				</product-item>
+				<div><b>Total: <span id="total"></span></b></div>
+			</shopping-cart>
+		</div>
+	</div>
+</section>
+<script src="/js/functions/functions.js"></script>
+<script type="module">
+	import * as x from '/js/functions/functions.js';
+	function Phone(name, price) {
+		this.name = name;
+		this.price = price;
+	}
+	const iphone = new Phone('iPhone 11', 1000);
+	const pixel = new Phone('Google Pixel 4', 1350);
+
+	const btn_add_iphone = x.get('#add-iphone');
+	const btn_add_pixel = x.get('#add-pixel');
+	const btn_remove_iphone = x.get('#remove-iphone');
+	const btn_remove_pixel = x.get('#remove-pixel');
+
+	const iphone_productLine = x.get('#iphone');
+	const pixel_productLine = x.get('#pixel');
+
+	const iphone_quantity = x.get('#iphone > .product-quantity');
+	const iphone_total = x.get('#iphone > .product-price-total');
+
+	const pixel_quantity = x.get('#pixel > .product-quantity');
+	const pixel_total = x.get('#pixel > .product-price-total');
+
+	const total = x.get('#total');
+
+	btn_add_iphone.onclick = function(){
+		iphone_productLine.hidden = false;
+		iphone_quantity.innerText = parseInt(iphone_quantity.innerText) + 1;
+		iphone_total.innerText = iphone.price * parseInt(iphone_quantity.innerText);
+		updateTotal();
+	};
+
+	btn_add_pixel.onclick = function(){
+		pixel_productLine.hidden = false;
+		pixel_quantity.innerText = parseInt(pixel_quantity.innerText) + 1;
+		pixel_total.innerText = pixel.price * parseInt(pixel_quantity.innerText);
+		updateTotal();
+	};
+
+	btn_remove_iphone.onclick = function () {
+		iphone_productLine.hidden = true;
+		iphone_quantity.innerText = 0;
+		iphone_total.innerText = iphone.price * parseInt(iphone_quantity.innerText);
+		updateTotal();
+	};
+
+	btn_remove_pixel.onclick = function () {
+		pixel_productLine.hidden = true;
+		pixel_quantity.innerText = 0;
+		pixel_total.innerText = pixel.price * parseInt(pixel_quantity.innerText);
+		updateTotal();
+	};
+
+	function updateTotal(){
+		const iphoneTotal = parseInt(iphone_total.innerText);
+		const pixelTotal = parseInt(pixel_total.innerText);
+		total.innerText = (iphoneTotal + pixelTotal);
+	}
+</script>

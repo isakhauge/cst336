@@ -133,4 +133,20 @@ router.get('/project1/compatibility', function(req, res, next) {
   res.render('project1/compatibility', project1);
 });
 
+
+/*
+* Project 2: Shopping Cart
+* */
+
+const project2 = {
+  title: 'CST 336: Project 2',
+  css: '<link rel="stylesheet" href="/stylesheets/style.css"><link rel="stylesheet" href="/stylesheets/project_specific/shopping-cart.css">',
+  fonts: '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500,700%7CRoboto:100,300,400,500,700,900&display=swap">',
+  footer: '<footer class="bg-dark py-3"> <section> <div class="container"> <p class="text-white text-center small m-0"> CST 336 - Internet Programming<br>The content on this website is written by Isak Hauge<br>&copy;<span id="year"></span>. All rights reserved.</p> <script>window.onload=function(){document.getElementById("year").innerText = new Date().getFullYear().toString();}</script> </div> </section> </footer>',
+};
+
+router.get('/project2', function(req, res, next) {
+  res.render('project2/index', project2);
+});
+
 module.exports = router;
