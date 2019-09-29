@@ -94,7 +94,7 @@
 				<button type="button" id="btn-submit" class="btn btn-secondary">Submit</button>
 			</div>
 		</form>
-		<div class="bg-light border rounded p-3 text-center">
+		<div id="game-status" class="bg-light border rounded p-3 text-center" hidden>
 			<h2>The total score is: <span id="game-score">0</span></h2>
 			<h3>Quiz taken: <span id="quiz-taken">0</span></h3>
 			<h4>Score history: <span id="score-history">0</span></h4>
@@ -240,19 +240,14 @@
 
 		let gameScore = 0;
 
-		if (window.localStorage.getItem('quizScore')){
-			window.localStorage.setItem('quizScore', window.localStorage.getItem('quizScore') + ', ' + gameScore);
-			quizTaken.innerText = window.localStorage.getItem('quizScore').split(', ').length;
-			scoreHistory.innerText = window.localStorage.getItem('quizScore');
-		} else{
-			window.localStorage.setItem('quizScore', gameScore);
-			quizTaken.innerText = 1;
-			scoreHistory.innerText = gameScore;
-		}
-
-		totalScore.innerText = gameScore;
-
 		x.get('#btn-submit').addEventListener('click', function (){
+
+			if (capital.value.length === 0) {
+				alert('Question 1 not answered!');
+				return;
+			}
+
+			x.get('#game-status').hidden = false;
 
 			const statuses = x.getAll('div.alert');
 			if (statuses.length > 0)
