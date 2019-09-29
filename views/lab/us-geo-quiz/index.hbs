@@ -10,13 +10,13 @@
 
 			<!-- Capital of California -->
 			<div class="form-group">
-				<h3>What is the capital of California?</h3>
+				<h3 id="h3-capital" data-answer>What is the capital of California?</h3>
 				<input type="text" id="capital-california" class="form-control" required>
 			</div>
 
 			<!-- Longest river in the USA -->
 			<div class="form-group">
-				<h3>What is the longest river?</h3>
+				<h3 id="h3-river" data-answer>What is the longest river?</h3>
 				<select name="longest-river" id="longest-river" class="form-control" required>
 					<option disabled selected>Select one</option>
 					<option value="mississippi">Mississippi</option>
@@ -28,7 +28,7 @@
 
 			<!-- The smallest state in USA -->
 			<div class="form-group py-3">
-				<h3>What is the smallest US state?</h3>
+				<h3 id="h3-state" data-answer>What is the smallest US state?</h3>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="radio" name="radio-smallest-state" id="radio-maine" value="maine" required>
 					<label class="form-check-label" for="radio-maine">Maine</label>
@@ -49,7 +49,7 @@
 
 			<!-- Presidents carved into Mount Rushmore -->
 			<div class="form-group py-3">
-				<h3>What presidents are carved into Mount Rushmore?</h3>
+				<h3 id="h3-presidents" data-answer>What presidents are carved into Mount Rushmore?</h3>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox" name="check-rushmore" id="check-jackson" value="jackson" required>
 					<label class="form-check-label" for="check-jackson">A.Jackson</label>
@@ -70,7 +70,7 @@
 
 			<!-- The State seal of California -->
 			<div class="form-group">
-				<h3>What image is in the Great Seal of the State of California?</h3>
+				<h3 id="h3-seal" data-answer>What image is in the Great Seal of the State of California?</h3>
 			</div>
 			<div class="form-group">
 				<div class="row">
@@ -147,6 +147,28 @@
 		-webkit-filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
 		filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
 	}
+
+	label, input, select {
+		cursor: pointer;
+	}
+
+	.form-group h3::before {
+		width: 30px;
+		height: 30px;
+		background-size: contain;
+		float: left;
+		margin-right: 10px;
+	}
+
+	.form-group h3[data-answer="true"]::before {
+		background-image: url("/images/lab/us-geo-quiz/checkmark.png");
+		content: "";
+	}
+
+	.form-group h3[data-answer="false"]::before {
+		background-image: url("/images/lab/us-geo-quiz/xmark.png");
+		content: "";
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="module">
@@ -202,6 +224,20 @@
 		const quizTaken = x.get('#quiz-taken');
 		const scoreHistory = x.get('#score-history');
 
+		const imgCheck = document.createElement('img');
+		imgCheck.src = '/images/lab/us-geo-quiz/checkmark.png';
+		imgCheck.width = 30;
+
+		const imgCross = document.createElement('img');
+		imgCross.src = '/images/lab/us-geo-quiz/xmark.png';
+		imgCross.width = 30;
+
+		const h3Captial = x.get('#h3-capital');
+		const h3River = x.get('#h3-river');
+		const h3State = x.get('#h3-state');
+		const h3President = x.get('#h3-presidents');
+		const h3Seal = x.get('#h3-seal');
+
 		let gameScore = 0;
 
 		if (window.localStorage.getItem('quizScore')){
@@ -225,14 +261,17 @@
 				});
 
 			const correctCapital = capital.value.toUpperCase() === correctAnswers.capital;
+			h3Captial.setAttribute('data-answer', correctCapital);
 			status(correctCapital,capital);
 			gameScore = (correctCapital) ? gameScore + 20 : gameScore;
 
 			const correctRiver = longestRiver.options[longestRiver.selectedIndex].text.toUpperCase() === correctAnswers.longestRiver;
+			h3River.setAttribute('data-answer', correctRiver);
 			status(correctRiver, longestRiver);
 			gameScore = (correctRiver) ? gameScore + 20 : gameScore;
 
 			const correctState = smallestState.checked === true;
+			h3State.setAttribute('data-answer', correctState);
 			status(correctState, smallestState.parentElement);
 			gameScore = (correctState) ? gameScore + 20 : gameScore;
 
@@ -241,12 +280,26 @@
 				&& rushmorePresidents.franklin.checked === true
 				&& rushmorePresidents.jefferson.checked === true
 				&& rushmorePresidents.roosevelt.checked === true;
+			h3President.setAttribute('data-answer', correctPresidents);
 			status(correctPresidents, rushmorePresidents.jackson.parentElement);
 			gameScore = (correctPresidents) ? gameScore + 20 : gameScore;
 
 			const correctSeal = seal.checked === true;
+			h3Seal.setAttribute('data-answer', correctSeal);
 			status(correctSeal, seal.parentElement.parentElement);
 			gameScore = (correctSeal) ? gameScore + 20 : gameScore;
+
+			if (window.localStorage.getItem('quizScore')){
+				window.localStorage.setItem('quizScore', window.localStorage.getItem('quizScore') + ', ' + gameScore);
+				quizTaken.innerText = window.localStorage.getItem('quizScore').split(', ').length;
+				scoreHistory.innerText = window.localStorage.getItem('quizScore');
+			} else{
+				window.localStorage.setItem('quizScore', gameScore);
+				quizTaken.innerText = 1;
+				scoreHistory.innerText = gameScore;
+			}
+
+			totalScore.innerText = gameScore;
 		});
 	});
 </script>
