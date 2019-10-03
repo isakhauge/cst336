@@ -210,8 +210,10 @@ export function isJSON(data) {
 
 	try {
 
-		JSON.parse(data);
-		return true;
+		const testObject = JSON.parse(data);
+		if (Object.values(testObject).length > 0)
+			return true;
+		else return false;
 
 	} catch (e) {
 

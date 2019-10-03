@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const bootstrap = '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
-
+const jquery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>';
 
 /* Landing page */
 router.get('/', function(req, res, next) {
@@ -39,7 +39,7 @@ router.get('/lab/jsguess', function (req, res, next) {
   res.render('lab/jsguess/index', {
     title: 'CST 238: Lab, JS guessing numbers',
     css: bootstrap,
-    script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+    script: jquery,
   });
 });
 
@@ -48,7 +48,7 @@ router.get('/lab/ajax', function (req, res, next) {
 	res.render('lab/ajax/index', {
 		title: 'CST 238: Lab, AJAX',
 		css: bootstrap,
-		script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+		script: jquery,
 	});
 });
 
@@ -57,16 +57,16 @@ router.get('/lab/us-geo-quiz', function (req, res, next) {
   res.render('lab/us-geo-quiz/index', {
     title: 'CST 238: Lab, JS Geography Quiz',
     css: bootstrap,
-    script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+    script: jquery,
   });
 });
 
-// Quiz
-router.get('/lab/us-geo-quiz', function (req, res, next) {
-  res.render('lab/us-geo-quiz/index', {
-    title: 'CST 238: Lab, JS Geography Quiz',
+// jQuery Challenge
+router.get('/lab/jquery-challenge', function (req, res, next) {
+  res.render('lab/jquery-challenge/index', {
+    title: 'CST 238: Lab, jQuery Challenge',
     css: bootstrap,
-    script: '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>',
+    script: jquery,
   });
 });
 

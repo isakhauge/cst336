@@ -1,6 +1,7 @@
 <section class="py-5 bg-primary">
 	<div class="container">
-		<h1 class="text-white">AJAX Sign Up Form</h1>
+		<h1 class="text-white text-center">AJAX Sign Up Form</h1>
+		<h2 class="text-white text-center mt-3 h5 font-weight-light">by Isak Hauge and Anders Bærø</h2>
 	</div>
 </section>
 <section class="py-5">
@@ -8,60 +9,64 @@
 		<form>
 			<fieldset>
 				<legend>Sign Up</legend>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">First Name:</label>
-					<input class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Last Name:</label>
-					<input class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Email:</label>
-					<input class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Phone Number:</label>
-					<input class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Zip Code:</label>
-					<input id="zip" class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">City:</label>
-					<input class="form-control col-sm-10" type="text" disabled>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Latitude:</label>
-					<input class="form-control col-sm-10" type="text" disabled>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Longitude:</label>
-					<input class="form-control col-sm-10" type="text" disabled>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">State:</label>
-					<input class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Select a County:</label>
-					<select class="form-control col-sm-10"></select>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Desired Username:</label>
-					<input class="form-control col-sm-10" type="text">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Password:</label>
-					<input class="form-control col-sm-10" type="password">
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Type Password Again:</label>
-					<input class="form-control col-sm-10" type="password">
+				<div class="form-group">
+					<label class="form-label">First Name:</label>
+					<input class="form-control" type="text" required>
 				</div>
 				<div class="form-group">
-					<input class="btn btn-primary" type="submit" value="Sign up!">
+					<label class="form-label">Last Name:</label>
+					<input class="form-control" type="text" required>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Email:</label>
+					<input class="form-control" type="email" required>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Phone Number:</label>
+					<input class="form-control" type="tel" required>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Zip Code:</label>
+					<input id="zip" class="form-control" type="text" required>
+					<div data-type="feedback" hidden></div>
+				</div>
+				<div class="form-group">
+					<label class="form-label">City:</label>
+					<input id="city" class="form-control" type="text" disabled required>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Latitude:</label>
+					<input id="lat" class="form-control" type="text" disabled required>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Longitude:</label>
+					<input id="lng" class="form-control" type="text" disabled required>
+				</div>
+				<div class="form-group">
+					<label class="form-label">State:</label>
+					<select id="state" class="form-control" required></select>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Select a County:</label>
+					<select id="county" class="form-control" required></select>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Desired Username:</label>
+					<input id="username" class="form-control" type="text" required>
+					<div data-type="feedback" hidden></div>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Password:</label>
+					<input id="password" class="form-control" type="password" required>
+					<div data-type="feedback" hidden></div>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Type Password Again:</label>
+					<input id="password-confirm" class="form-control" type="password" required>
+					<div data-type="feedback" hidden></div>
+				</div>
+				<div class="form-group">
+					<input id="submit" class="btn btn-primary" type="submit" value="Sign up!">
 				</div>
 			</fieldset>
 		</form>
@@ -69,21 +74,224 @@
 </section>
 <script type="module">
 	import * as x from "/js/functions/functions.js";
-	const inputZip = document.getElementById('zip');
+	const inputZip = x.get('#zip');
+	const inputUsername = x.get('#username');
+	const buttonSubmit = x.get('#submit');
+	const inputPass1 = x.get('#password');
+	const inputPass2 = x.get('#password-confirm');
 
-	const ev_zip_onInput = {
+	// Event listener: ZIP Code
+	const ev_onInput_zip = {
 		type: 'input',
 		listener: function(e) {
 			const elem = e.target;
-			if (elem.value.length === 5)
-				x.ajaxFetch(elem.value, 'https://cst336.herokuapp.com/projects/api/cityInfoAPI.php?zip=', function (raw) {
-					if (x.isJSON(raw)){
-						const jsonObj = JSON.parse(raw);
-						console.log(jsonObj);
-					}
+			if (elem.value.length === 5) {
+				resetZip(function() {
+					x.ajaxFetch(elem.value, 'https://cst336.herokuapp.com/projects/api/cityInfoAPI.php?zip=', function (raw) {
+						if (x.isJSON(raw)){
+							setValidation(x.get('#zip'), true);
+							setValidationMessage('zip', true, 'Valid ZIP Code.');
+
+							const objZip = JSON.parse(raw);
+
+							const inputCity = x.get('#city');
+							const inputLat = x.get('#lat');
+							const inputLng = x.get('#lng');
+
+							inputCity.value = objZip.city;
+							inputLat.value = objZip.latitude;
+							inputLng.value = objZip.longitude;
+
+							populateCounty(objZip.county, objZip.state, function(county, state) {
+								populateState(county, state, function(objStates) {
+									x.cout('End of callback chain!', 'success');
+								});
+							});
+						} else {
+							setValidation(x.get('#zip'), false);
+							setValidationMessage('zip', false, 'Invalid ZIP Code.');
+						}
+					});
 				});
+			}
 		},
 	};
 
-	inputZip.addEventListener(ev_zip_onInput.type,ev_zip_onInput.listener);
+	function setValidation(elem, valid) {
+		const isValid = elem.classList.contains('is-valid');
+		const isInvalid = elem.classList.contains('is-invalid');
+		if (valid) {
+			if (isInvalid)
+				elem.classList.replace('is-invalid', 'is-valid');
+			else elem.classList.add('is-valid');
+		} else if (!valid) {
+			if (isValid)
+				elem.classList.replace('is-valid', 'is-invalid');
+			else elem.classList.add('is-invalid');
+		}
+	}
+
+	function setValidationMessage(inputId, valid, message) {
+		const elem = x.get('#' + inputId + ' ~ [data-type="feedback"]');
+		if (elem) {
+			const isValid = elem.classList.contains('valid-feedback');
+			const isInvalid = elem.classList.contains('invalid-feedback');
+			if (valid) {
+				if (isInvalid)
+					elem.classList.replace('invalid-feedback', 'valid-feedback');
+				else elem.classList.add('valid-feedback');
+			} else if (!valid) {
+				if (isValid)
+					elem.classList.replace('valid-feedback', 'invalid-feedback');
+				else elem.classList.add('invalid-feedback');
+			}
+			elem.innerText = message;
+			elem.hidden = false;
+		}
+	}
+
+	function resetZip(callback) {
+		x.get('#city').value = '';
+		x.get('#lat').value = '';
+		x.get('#lng').value = '';
+		const selectState = x.get('#state');
+		const selectCounty = x.get('#county');
+		while (selectState.hasChildNodes())
+			selectState.firstChild.remove();
+		while (selectCounty.hasChildNodes())
+			selectCounty.firstChild.remove();
+		callback();
+	}
+
+	function generateOption(value, text, condition=false) {
+		const elem = document.createElement('option');
+		elem.value = value;
+		elem.innerText = text;
+		if (condition)
+			elem.selected = true;
+		return elem;
+	}
+
+	function populateCounty(county, state, callback) {
+		x.ajaxFetch(state, 'https://cst336.herokuapp.com/projects/api/countyListAPI.php?state=', function (raw) {
+			if (x.isJSON(raw)) {
+				const objCounty = JSON.parse(raw);
+				const selectCounty = x.get('#county');
+				objCounty.forEach( e => {
+					selectCounty.append(
+						generateOption(e.county, e.county, county === e.county)
+					);
+				});
+				callback(county, state);
+			}
+		});
+	}
+
+	function populateState(county, state, callback) {
+		x.ajaxFetch('', 'https://cst336.herokuapp.com/projects/api/state_abbrAPI.php', function (raw) {
+			if (x.isJSON(raw)) {
+				const objStates = JSON.parse(raw);
+				const selectState = x.get('#state');
+				objStates.forEach(e => {
+					selectState.append(
+						generateOption(e.usps, e.state, (state === e.usps))
+					)
+				});
+			}
+		});
+	}
+
+	const ev_onInput_username = {
+		type: 'input',
+		listener: function(e) {
+			const self = e.target;
+			x.ajaxFetch(self.value, 'https://cst336.herokuapp.com/projects/api/usernamesAPI.php?username=', function (raw) {
+				if (x.isJSON(raw)) {
+					const objStatus = JSON.parse(raw);
+					if (objStatus.available === false) {
+						setValidation(self, false);
+						setValidationMessage('username', false, 'Username is taken.');
+					} else if (objStatus.available === true) {
+						setValidation(self, true);
+						setValidationMessage('username', true, 'Username is available.');
+					}
+				}
+			});
+		}
+	};
+
+	function usernameIsValid(username) {
+		return username.length > 0;
+	}
+
+	function passwordIsValid(password) {
+		return password.length > 5;
+	}
+
+	function passwordMatches(passord, confirmationPassord) {
+		return passord === confirmationPassord;
+	}
+
+	function formIsValid(username, password, confirmationPassword) {
+		const unameValid = usernameIsValid(username);
+		if (!unameValid) {
+			setValidation(x.get('#username'), false);
+			setValidationMessage('username', false, 'Username cannot be empty!');
+		}
+		return unameValid
+			&& passwordIsValid(password)
+			&& passwordMatches(password, confirmationPassword);
+	}
+
+	const ev_onClick_submit = {
+		type: 'click',
+		listener: function(e) {
+			const username = x.get('#username').value;
+			const password1 = x.get('#password').value;
+			const password2 = x.get('#password-confirm').value;
+			if (formIsValid(username,password1,password2))
+				document.body.innerHTML = `
+					<div class="bg-primary d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+						<h1 class="text-white">User Registration Success</h1>
+					</div>
+				`;
+		}
+	};
+
+	const ev_onInput_password = {
+		type: 'input',
+		listener: function(e) {
+			const self = e.target;
+			const password1 = x.get('#password').value;
+			if (passwordIsValid(password1)) {
+				setValidation(self, true);
+				setValidationMessage('password', true, 'Password is valid.');
+			} else {
+				setValidation(self, false);
+				setValidationMessage('password', false, 'Password must be at least 6 characters long.');
+			}
+		}
+	};
+
+	const ev_onInput_passwordConfirm = {
+		type: 'input',
+		listener: function(e) {
+			const self = e.target;
+			const password1 = x.get('#password').value;
+			const password2 = x.get('#password-confirm').value;
+			if (passwordMatches(password1, password2)) {
+				setValidation(self, true);
+				setValidationMessage('password-confirm', true, 'Passwords are matching.');
+			} else {
+				setValidation(self, false);
+				setValidationMessage('password-confirm', false, 'Passwords do not match!');
+			}
+		}
+	};
+
+	inputZip.addEventListener(ev_onInput_zip.type, ev_onInput_zip.listener);
+	inputUsername.addEventListener(ev_onInput_username.type, ev_onInput_username.listener);
+	buttonSubmit.addEventListener(ev_onClick_submit.type, ev_onClick_submit.listener);
+	inputPass1.addEventListener(ev_onInput_password.type, ev_onInput_password.listener);
+	inputPass2.addEventListener(ev_onInput_passwordConfirm.type, ev_onInput_passwordConfirm.listener);
 </script>
