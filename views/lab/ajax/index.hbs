@@ -79,6 +79,7 @@
 	const buttonSubmit = x.get('#submit');
 	const inputPass1 = x.get('#password');
 	const inputPass2 = x.get('#password-confirm');
+	const selectState = x.get('#state');
 
 	// Event listener: ZIP Code
 	const ev_onInput_zip = {
@@ -220,6 +221,21 @@
 		}
 	};
 
+	const ev_onChange_state = {
+		type: 'change',
+		listener: function (e) {
+			const self = e.target;
+			const selectCounty = x.get('#county');
+			const state = self.value;
+			x.cout('County: ' + state, 'warning');
+			while (selectCounty.hasChildNodes())
+				selectCounty.firstChild.remove();
+			populateCounty('', state, function (county, state) {
+				x.cout(county + ' ' + state);
+			});
+		}
+	};
+
 	function usernameIsValid(username) {
 		return username.length > 0;
 	}
@@ -291,6 +307,7 @@
 
 	inputZip.addEventListener(ev_onInput_zip.type, ev_onInput_zip.listener);
 	inputUsername.addEventListener(ev_onInput_username.type, ev_onInput_username.listener);
+	selectState.addEventListener(ev_onChange_state.type, ev_onChange_state.listener);
 	buttonSubmit.addEventListener(ev_onClick_submit.type, ev_onClick_submit.listener);
 	inputPass1.addEventListener(ev_onInput_password.type, ev_onInput_password.listener);
 	inputPass2.addEventListener(ev_onInput_passwordConfirm.type, ev_onInput_passwordConfirm.listener);
