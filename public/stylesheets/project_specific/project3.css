@@ -11,8 +11,6 @@ main{
 .grid{
 	display: grid;
 	position: relative;
-	width: calc(100% - 20px);
-	grid-template-columns: 33.33% 33.33% 33.33%;
 	grid-auto-rows: 230px;
 	grid-gap: 10px;
 }

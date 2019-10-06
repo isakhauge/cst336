@@ -18,7 +18,7 @@ export class UnsplashImage extends HTMLElement{
 		this.statsContainer.setAttribute('class', 'stats');
 		this.icon.setAttribute('class', 'material-icons');
 
-		f.cout('Constructor invoked');
+		f.cout('UnsplashImage Element Created', 'primary');
 	}
 
 	static rsc(){
@@ -51,7 +51,6 @@ export class UnsplashImage extends HTMLElement{
 			this.statsContainer.append(this.icon, this.numLikes);
 			this.append(this.statsContainer);
 		}
-		f.cout('Conected Callback invoked');
 	};
 
 	attributeChangedCallback(attrName, oldVal, newVal){
@@ -65,7 +64,7 @@ export class UnsplashImage extends HTMLElement{
 				this.numLikes.innerText = this.likes;
 				if (parseInt(this.likes) === 0)
 					this.icon.innerText = UnsplashImage.rsc().icon.noLikes;
-				else if (parseInt(this.likes) < 1000)
+				else if (parseInt(this.likes) < 500)
 					this.icon.innerText = UnsplashImage.rsc().icon.likes;
 				else this.icon.innerText = UnsplashImage.rsc().icon.manyLikes;
 				break;

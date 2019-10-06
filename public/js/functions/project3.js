@@ -2,7 +2,7 @@ import * as f from './functions.js';
 import {UnsplashImage} from "../components/UnsplashImage.js";
 
 // Initial loading indication.
-f.debug('Project 3', 'JS file loaded.', 'success');
+f.debug('Project 3', 'JS files imported', 'success');
 
 
 function searchImage(searchValue, callback) {
@@ -21,7 +21,7 @@ function searchImage(searchValue, callback) {
 				);
 			});
 		} else {
-			f.cout('Could not fetch pictures from Unsplash servers.', 'warning');
+			f.cout('Could not find pictures from Unsplash servers.', 'warning');
 			displayNothingFound(searchValue);
 		}
 	});
