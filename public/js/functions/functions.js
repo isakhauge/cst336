@@ -1,16 +1,62 @@
 /**
  * Console Out.
- *
  * @description This function simplifies the console log
  * function.
- *
  * @param {string} msg - The message.
  * @param {string} colorName - The color.
  * */
 export function cout(msg, colorName = '') {
 
+	// * Init. color combination object.
+	const combo = colorCombo(colorName);
+
+	console.log(
+		'%c' + msg,
+		'color: ' + combo.color + ';' +
+		'background: ' + combo.background + ';' +
+		'padding: 4px 6px;' +
+		'border-radius: 5px;' +
+		'border: 3px solid ' + combo.border + ';'
+	);
+}
+
+
+/**
+ * Bootstrap Colors
+ * @type {{border: {LIGHT: string, DARK: string}, DANGER: string, WHITE: string, SUCCESS: string, HWITE50: string, BLACK50: string, LIGHT: string, SECONDARY: string, DARK: string, PRIMARY: string, HVITE50: string, INFO: string, WARNING: string, NUTED: string}}
+ */
+const BOOTSTRAP_COLORS = {
+	PRIMARY:      '#007bff',
+	SECONDARY:    '#6c757d',
+	SUCCESS:      '#28a745',
+	DANGER:       '#dc3545',
+	WARNING:      '#ffc107',
+	INFO:         '#17a2b8',
+	NUTED:        '#6c757d',
+	LIGHT:        '#f8f9fa',
+	DARK:         '#343a40',
+	WHITE:        '#ffffff',
+	HWITE50:      'rgba(255,255,255,.5)',
+	HVITE50:      'rgba(0,0,0,.5)',
+	BLACK50:			'rgba(0,0,0,0)',
+	border: {
+		LIGHT: 'rgba(255,255,255,0.2)',
+		DARK: 'rgba(0,0,0,0.2)'
+	},
+};
+
+
+
+
+/**
+ * Color Combo
+ * @param {string} color The main color.
+ * @returns {{border: string, color: string, background: string}}
+ */
+function colorCombo(color) {
+
 	// * Init. object of standard Bootstrap colors.
-	const color = {
+	const colors = {
 		primary:      '#007bff',
 		secondary:    '#6c757d',
 		success:      '#28a745',
@@ -33,102 +79,82 @@ export function cout(msg, colorName = '') {
 	// * Init. color combination object.
 	const combo = {color: '', background: '', border: ''};
 
-	switch (colorName) {
-		case Object.keys(color)[0]:
-			combo.color = color.white;
-			combo.background = color.primary;
-			combo.border = color.border.light;
+	switch (color) {
+		case Object.keys(colors)[0]:
+			combo.color = colors.white;
+			combo.background = colors.primary;
+			combo.border = colors.border.light;
 			break;
-		case Object.keys(color)[1]:
-			combo.color = color.white;
-			combo.background = color.secondary;
-			combo.border = color.border.dark;
+		case Object.keys(colors)[1]:
+			combo.color = colors.white;
+			combo.background = colors.secondary;
+			combo.border = colors.border.dark;
 			break;
-		case Object.keys(color)[2]:
-			combo.color = color.white;
-			combo.background = color.success;
-			combo.border = color.border.light;
+		case Object.keys(colors)[2]:
+			combo.color = colors.white;
+			combo.background = colors.success;
+			combo.border = colors.border.light;
 			break;
-		case Object.keys(color)[3]:
-			combo.color = color.light;
-			combo.background = color.danger;
-			combo.border = color.border.light;
+		case Object.keys(colors)[3]:
+			combo.color = colors.light;
+			combo.background = colors.danger;
+			combo.border = colors.border.light;
 			break;
-		case Object.keys(color)[4]:
-			combo.color = color.dark;
-			combo.background = color.warning;
-			combo.border = color.border.dark;
+		case Object.keys(colors)[4]:
+			combo.color = colors.dark;
+			combo.background = colors.warning;
+			combo.border = colors.border.dark;
 			break;
-		case Object.keys(color)[5]:
-			combo.color = color.light;
-			combo.background = color.info;
-			combo.border = color.border.light;
+		case Object.keys(colors)[5]:
+			combo.color = colors.light;
+			combo.background = colors.info;
+			combo.border = colors.border.light;
 			break;
-		case Object.keys(color)[6]:
-			combo.color = color.white50;
-			combo.background = color.muted;
-			combo.border = color.border.light;
+		case Object.keys(colors)[6]:
+			combo.color = colors.white50;
+			combo.background = colors.muted;
+			combo.border = colors.border.light;
 			break;
-		case Object.keys(color)[7]:
-			combo.color = color.dark;
-			combo.background = color.light;
-			combo.border = color.border.dark;
+		case Object.keys(colors)[7]:
+			combo.color = colors.dark;
+			combo.background = colors.light;
+			combo.border = colors.border.dark;
 			break;
-		case Object.keys(color)[8]:
-			combo.color = color.light;
-			combo.background = color.dark;
-			combo.border = color.border.light;
+		case Object.keys(colors)[8]:
+			combo.color = colors.light;
+			combo.background = colors.dark;
+			combo.border = colors.border.light;
 			break;
-		case Object.keys(color)[9]:
-			combo.color = color.dark;
-			combo.background = color.white;
-			combo.border = color.border.dark;
+		case Object.keys(colors)[9]:
+			combo.color = colors.dark;
+			combo.background = colors.white;
+			combo.border = colors.border.dark;
 			break;
 		default:
-			combo.color = color.light;
-			combo.background = color.dark;
-			combo.border = color.border.light;
+			combo.color = colors.light;
+			combo.background = colors.dark;
+			combo.border = colors.border.light;
 			break;
 	}
-
-	console.log(
-		'%c' + msg,
-		'color: ' + combo.color + ';' +
-		'background: ' + combo.background + ';' +
-		'padding: 4px 6px;' +
-		'border-radius: 5px;' +
-		'border: 3px solid ' + combo.border + ';'
-	);
-
+	return combo;
 }
 
-export function colors() {
-	return {
-		PRIMARY:      '#007bff',
-		SECONDARY:    '#6c757d',
-		SUCCESS:      '#28a745',
-		DANGER:       '#dc3545',
-		WARNING:      '#ffc107',
-		INFO:         '#17a2b8',
-		NUTED:        '#6c757d',
-		LIGHT:        '#f8f9fa',
-		DARK:         '#343a40',
-		WHITE:        '#ffffff',
-		HWITE50:      'rgba(255,255,255,.5)',
-		HVITE50:      'rgba(0,0,0,.5)',
-		BLACK50:			'rgba(0,0,0,0)',
-		border: {
-			LIGHT: 'rgba(255,255,255,0.2)',
-			DARK: 'rgba(0,0,0,0.2)'
-		},
-	}
-}
 
-export function debug(object, message, color=''){
+/**
+ * Debug
+ * @param {string} context The context of the message.
+ * @param {string} message The message.
+ * @param {string} color The color of the message.
+ */
+export function debug(context, message, color=''){
+
+	// * Init. color combo object.
+	const combo = colorCombo(color);
+
 	console.log(
-		'%c' + object.name + ': ' +
-		'%c' + msg,
-		'font-weight: 700pt',
+		'%c' + context + ': ' +
+		'%c' + message,
+		'font-weight: 700',
 		'color: ' + combo.color + ';' +
 		'background: ' + combo.background + ';' +
 		'padding: 4px 6px;' +
@@ -177,6 +203,8 @@ export function ajaxFetch(searchValue, url, callback){
 }
 
 
+
+
 /**
  * AJAX Send JSON
  * */
@@ -197,6 +225,8 @@ export function ajaxJSON(jsonObject, url, callback){
 }
 
 
+
+
 /**
  * Is JSON.
  *
@@ -211,9 +241,7 @@ export function isJSON(data) {
 	try {
 
 		const testObject = JSON.parse(data);
-		if (Object.values(testObject).length > 0)
-			return true;
-		else return false;
+		return Object.values(testObject).length > 0;
 
 	} catch (e) {
 
@@ -222,6 +250,8 @@ export function isJSON(data) {
 	}
 
 }
+
+
 
 
 /**
@@ -234,6 +264,8 @@ export function get(selector) {
 }
 
 
+
+
 /**
  * Get All
  * @param selector
@@ -241,4 +273,30 @@ export function get(selector) {
  */
 export function getAll(selector) {
 	return document.querySelectorAll(selector);
+}
+
+
+/**
+ * Make
+ * @param {string} tagName The tag name of the element.
+ * @param innerHTML
+ * @returns {HTMLElement}
+ */
+export function make(tagName, innerHTML=null) {
+	const elem = document.createElement(tagName);
+	if (innerHTML)
+		elem.innerHTML = innerHTML;
+	return elem;
+}
+
+
+
+
+/**
+ * Flush Children.
+ * @param node The node who's children shall be flushed.
+ */
+export function flushChildren(node) {
+	while (node.hasChildNodes())
+		node.firstChild.remove();
 }

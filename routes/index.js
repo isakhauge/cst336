@@ -3,6 +3,8 @@ var router = express.Router();
 
 const bootstrap = '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 const jquery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>';
+const materialIcons = '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+const robotoFonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,300,400,500,700%7CRoboto:100,300,400,500,700,900&display=swap">';
 
 /* Landing page */
 router.get('/', function(req, res, next) {
@@ -147,6 +149,20 @@ const project2 = {
 
 router.get('/project2', function(req, res, next) {
   res.render('project2/index', project2);
+});
+
+/*
+* Project 3: Third-Party APIs and AJAX
+* */
+const project3 = {
+  title: 'CST 336: Project 3',
+  css: bootstrap + '<link rel="stylesheet" href="/stylesheets/project_specific/project3.css" type="text/css">',
+  fonts: materialIcons + '\n' + robotoFonts,
+  footer: '<footer class="bg-dark py-3"> <section> <div class="container"> <p class="text-white text-center small m-0"> CST 336 - Internet Programming<br>The content on this website is written by Isak Hauge<br>&copy;<span id="year"></span>. All rights reserved.</p> <script>window.onload=function(){document.getElementById("year").innerText = new Date().getFullYear().toString();}</script> </div> </section> </footer>',
+};
+
+router.get('/project3', function(req, res, next) {
+  res.render('project3/index', project3);
 });
 
 module.exports = router;

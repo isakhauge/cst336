@@ -1,6 +1,7 @@
-
+import * as f from '../functions/functions.js';
+import {UnsplashImage} from "./UnsplashImage.js";
 
 window.addEventListener('load', function (e) {
-	window.customElements.define('navbar', NavigationBar);
-	window.customElements.define('contact-box', ContactBox);
+	window.customElements.define('unsplash-img', UnsplashImage);
+	f.debug('Imported components', 'Defined.', 'success');
 });
