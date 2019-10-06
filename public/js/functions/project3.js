@@ -1,5 +1,7 @@
 import * as f from './functions.js';
 import {UnsplashImage} from "../components/UnsplashImage.js";
+import * as jQuery from '../vendors/jquery431.min.js';
+jQuery.inject();
 
 // Initial loading indication.
 f.debug('Project 3', 'JS files imported', 'success');
@@ -20,6 +22,7 @@ function searchImage(searchValue, callback) {
 					e.alt_description
 				);
 			});
+			callback(object);
 		} else {
 			f.cout('Could not find pictures from Unsplash servers.', 'warning');
 			displayNothingFound(searchValue);
@@ -62,10 +65,10 @@ const ev_searchBarOnEnter = {
 };
 
 function initiateSearch(e) {
-	const searchBar = f.get('#search-bar');
-	if (searchBar.value.length > 2) {
-		searchImage(searchBar.value, function(jsonObject) {
-			console.log(jsonObject);
+	const searchValue = f.get('#search-bar').value;
+	if (searchValue.length > 2) {
+		searchImage(searchValue, function(jsonObject) {
+			f.cout(jsonObject.length.toString() + ' images were found.');
 		});
 	}
 }
@@ -81,6 +84,7 @@ function resetGrid() {
 window.addEventListener('load', function() {
 	const buttonSearch = f.get('#search');
 	const inputSearch = f.get('#search-bar');
+	inputSearch.focus();
 	buttonSearch.addEventListener(ev_searchButtonOnClick.type, ev_searchButtonOnClick.listener);
 	inputSearch.addEventListener(ev_searchBarOnEnter.type, ev_searchBarOnEnter.listener);
 });
