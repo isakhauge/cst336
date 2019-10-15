@@ -5,9 +5,6 @@ jQuery.inject();
 
 // Initial loading indication.
 f.debug('Lab 5', 'JS files imported', 'success');
-for (let i=0; i<100; i++)
-	f.cout(randomRange(10,20),'success');
-
 
 function searchImage(searchValue, orientation, callback) {
 	const url = generateURL(searchValue, orientation);
