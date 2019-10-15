@@ -5,6 +5,8 @@ jQuery.inject();
 
 // Initial loading indication.
 f.debug('Lab 5', 'JS files imported', 'success');
+for (let i=0; i<100; i++)
+	f.cout(randomRange(10,20),'success');
 
 
 function searchImage(searchValue, orientation, callback) {
@@ -14,17 +16,36 @@ function searchImage(searchValue, orientation, callback) {
 			const object = JSON.parse(raw);
 			resetGrid();
 			if (object.hits.length > 0) {
-				object.hits.forEach( e => {
-					populateImage(
-						e.id,
-						e.webformatURL,
-						e.imageWidth,
-						e.imageHeight,
-						parseInt(e.imageHeight / e.imageWidth),
-						e.likes,
-						e.tags
-					);
-				});
+				if (object.hits.length > 4) {
+					let limit = 4;
+					while (limit > 0) {
+						const i = randomRange(0, object.hits.length);
+						const e = object.hits[i];
+						console.log(e);
+						populateImage(
+							e.id,
+							e.webformatURL,
+							e.imageWidth,
+							e.imageHeight,
+							parseInt(e.imageHeight / e.imageWidth),
+							e.likes,
+							e.tags
+						);
+						limit--;
+					}
+				} else {
+					object.hits.forEach( e => {
+						populateImage(
+							e.id,
+							e.webformatURL,
+							e.imageWidth,
+							e.imageHeight,
+							parseInt(e.imageHeight / e.imageWidth),
+							e.likes,
+							e.tags
+						);
+					});
+				}
 			} else displayNothingFound(searchValue);
 			callback(object);
 		} else {
@@ -32,6 +53,10 @@ function searchImage(searchValue, orientation, callback) {
 			displayNothingFound(searchValue);
 		}
 	});
+}
+
+function randomRange(start, end) {
+	return Math.round(Math.random() * (end - start) + start);
 }
 
 function generateURL(searchValue, orientation) {
