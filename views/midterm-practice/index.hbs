@@ -1,0 +1,89 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+	tr, td{
+		border:1px gray solid;
+		text-align: right;
+		padding:5px;
+	}
+	body, th {
+		text-align: center;
+	}
+	table {
+		margin: 0 auto;
+	}
+</style>
+<h1 class="jumbotron"> End-of-Summer Sale! </h1>
+<h2> Cart </h2>
+<table>
+	<tr>
+		<th>Product</th>
+		<th>Unit Price</th>
+		<th> Quantity </th>
+		<th>Total</th>
+	</tr>
+	<span id="products">
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td><input type="text" size="5"></td>
+			<td> </td>
+		</tr>
+	</span>
+	<tr>
+		<td id="discount-description">Discount</td>
+		<td id="discount-unit"> </td>
+		<td id="discount-quantity"> </td>
+		<td id="discount-total"> </td>
+	</tr>
+	<tr>
+		<td id="shipping-description">Shipping</td>
+		<td id="shipping-unit"> </td>
+		<td id="shipping-quantity"> </td>
+		<td id="shipping-total"> </td>
+	</tr>
+	<tr>
+		<td id="subtotal-description">Subtotal</td>
+		<td id="subtotal-unit"> </td>
+		<td id="subtotal-quantity"> </td>
+		<td id="subtotal-total"> </td>
+	</tr>
+	<tr>
+		<td id="tax-description">Tax (10%)</td>
+		<td id="tax-unit"> </td>
+		<td id="tax-quantity"> </td>
+		<td id="tax-total"> </td>
+	</tr>
+	<tr>
+		<td id="total-description">Total</td>
+		<td id="total-unit"> </td>
+		<td id="total-quantity"> </td>
+		<td id="total-total"> </td>
+	</tr>
+</table>
+<br><br>
+<strong>Promo Code: </strong> <input type="text">
+<h3>Shipping & handling</h3>
+<script>
+	const TableRowElement = function(descriptionID, unitID, quantityID, totalID) {
+		this.descriptionElement = $(descriptionID);
+		this.unitElement = $(unitID);
+		this.quantityElement = $(quantityID);
+		this.totalElement = $(totalID);
+	};
+	TableRowElement.prototype.getDescriptionElement = function() {return this.descriptionElement;};
+	TableRowElement.prototype.getUnitElement = function() {return this.unitElement;};
+	TableRowElement.prototype.getQuantityElement = function() {return this.quantityElement;};
+	TableRowElement.prototype.getTotalElement = function() {return this.totalElement;};
+	TableRowElement.prototype.setDescriptionElement = function(description) {this.descriptionElement.innerText = description; return this;};
+	TableRowElement.prototype.setUnitElement = function(unit) {this.unitElement.innerText = unit; return this;};
+	TableRowElement.prototype.setQuantityElement = function(quantity) {this.quantityElement.innerText = quantity; return this;};
+	TableRowElement.prototype.setTotalElement = function(total) {this.totalElement.innerText = total; return this;};
+	const MetaElements = {
+		discount: new TableRowElement('discount-description', 'discount-unit', 'discount-quantity', 'discount-total'),
+		shipping: new TableRowElement('shipping-description', 'shipping-unit', 'shipping-quantity', 'shipping-total'),
+		subtotal: new TableRowElement('subtotal-description', 'subtotal-unit', 'subtotal-quantity', 'subtotal-total'),
+		tax: new TableRowElement('tax-description', 'tax-unit', 'tax-quantity', 'tax-total'),
+		total: new TableRowElement('total-description', 'total-unit', 'total-quantity', 'total-total'),
+	};
+	$(document).ready(function(){});
+</script>

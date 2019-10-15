@@ -72,6 +72,17 @@ router.get('/lab/jquery-challenge', function (req, res, next) {
   });
 });
 
+// Pixabay API
+router.get('/lab/pixabay', function (req, res, next) {
+  res.render('lab/pixabay/index', {
+    title: 'CST 238: Lab 5, Pixabay API',
+    script: jquery,
+    css: bootstrap + '<link rel="stylesheet" href="/stylesheets/project_specific/lab5.css" type="text/css">',
+    fonts: materialIcons + '\n' + robotoFonts,
+    footer: '<footer class="bg-dark py-3"> <section> <div class="container"> <p class="text-white text-center small m-0"> CST 336 - Internet Programming<br>The content on this website is written by Isak Hauge<br>&copy;<span id="year"></span>. All rights reserved.</p> <script>window.onload=function(){document.getElementById("year").innerText = new Date().getFullYear().toString();}</script> </div> </section> </footer>',
+  });
+});
+
 
 
 /*
@@ -163,6 +174,32 @@ const project3 = {
 
 router.get('/project3', function(req, res, next) {
   res.render('project3/index', project3);
+});
+
+/*
+* Midterm Practice
+* */
+const midtermPractice = {
+  title: 'CST 336: Midterm Practice',
+  css: bootstrap,
+  fonts: materialIcons + '\n' + robotoFonts
+};
+
+router.get('/midterm-practice', function(req, res, next) {
+  res.render('midterm-practice/index', midtermPractice);
+});
+
+/*
+* Midterm
+* */
+const midterm = {
+  title: 'CST 336: Midterm',
+  css: bootstrap,
+  fonts: materialIcons + '\n' + robotoFonts
+};
+
+router.get('/midterm', function(req, res, next) {
+  res.render('midterm/index', midterm);
 });
 
 module.exports = router;

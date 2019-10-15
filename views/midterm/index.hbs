@@ -1,0 +1,43 @@
+<section class="py-5 bg-danger">
+	<div class="container">
+		<h1 class="text-white text-center">
+			CST 336 - Midterm
+		</h1>
+	</div>
+</section>
+<section class="py-5 bg-dark">
+	<div class="container text-center">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/DyX-QZZBgpw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+</section>
+<section class="py-5">
+	<div class="container">
+		<div class="row">
+			<div class="col"><button id="see-comments" type="button">See comments</button></div>
+			<div class="col"><button id="answer-question" type="button">Answer question</button></div>
+			<div class="col"><button id="like" type="button"><img src="/images/midterm/like.png" width="24" alt="Thumbs up"></button></div>
+			<div class="col"><button id="cancel-like" type="button"><img src="/images/midterm/cancel-like.png" width="24" alt="Thumbs up"></button></div>
+			<div class="col"><div id="like-num">Loading</div></div>
+			<div class="col"><button id="dislike" type="button"><img src="/images/midterm/dislike.png" width="24" alt="Thumbs up"></button></div>
+			<div class="col"><button id="cancel-dislike" type="button"><img src="/images/midterm/cancel-dislike.png" width="24" alt="Thumbs up"></button></div>
+			<div class="col"><div id="dislike-num">Loading</div></div>
+		</div>
+	</div>
+</section>
+<section class="py-5 border-top">
+	<div id="comments" class="container">
+	</div>
+</section>
+<section class="py-5 border-top">
+	<div class="container">
+		<h2>What was this video about</h2>
+		<select class="form-control mb-2" name="question" id="question">
+			<option value="default" selected disabled>Select value</option>
+			<option value="outdoor-wildlife">Outdoor and wildlife</option>
+			<option value="food">Food</option>
+			<option value="tech">Technology</option>
+		</select>
+		<div div="status" class="alert" hidden></div>
+	</div>
+</section>
+<script type="module" src="/js/functions/midterm.js"></script>
