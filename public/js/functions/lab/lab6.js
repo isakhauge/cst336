@@ -24,6 +24,7 @@ function getImage(query, callback) {
 	f.ajaxFetch('', BASE_URL_IMAGE + query, function(raw) {
 		if (f.isJSON(raw)) {
 			const obj = JSON.parse(raw);
+			f.cout(query + ' image fetched from Wikipedia', 'primary');
 			callback(obj.items[0].thumbnail.source);
 		}
 	});
@@ -33,6 +34,7 @@ function getInfo(query, callback) {
 	f.ajaxFetch('', BASE_URL_SUMMARY + query, function(raw) {
 		if (f.isJSON(raw)) {
 			const obj = JSON.parse(raw);
+			f.cout(query + ' info fetched from Wikipedia', 'primary');
 			callback(obj.title, obj.extract);
 		}
 	});
@@ -75,6 +77,7 @@ function insertElement(element) {
 }
 
 function onLoad() {
+	f.cout('JS Module Loaded', 'success');
 	const query = getQuery(QUERY_PARAM);
 	if (query) {
 		if (Object.values(ENTITY_QUERIES).includes(query)) {
