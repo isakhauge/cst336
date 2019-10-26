@@ -6,10 +6,25 @@ const labRouter = express.Router();
 * Lab
 * */
 
+// Flexbox
+labRouter.get('/flexbox', function (req, res, next) {
+	res.render('lab/flexbox/index', {
+		title: 'CST 238: Lab, Flexbox',
+	});
+});
+
 // Hidden cat
 labRouter.get('/hiddencat', function (req, res, next) {
 	res.render('lab/hiddencat/index', {
 		title: 'CST 238: Lab',
+		css: rsc.bootstrap,
+	});
+});
+
+// Hidden cat
+labRouter.get('/jquery-challenge', function (req, res, next) {
+	res.render('lab/jquery-challenge/index', {
+		title: 'CST 238: Lab, jQuery Challenge',
 		css: rsc.bootstrap,
 	});
 });
@@ -44,7 +59,7 @@ labRouter.get('/ajax', function (req, res, next) {
 labRouter.get('/us-geo-quiz', function (req, res, next) {
 	res.render('lab/us-geo-quiz/index', {
 		title: 'CST 238: Lab, JS Geography Quiz',
-		css: bootstrap,
+		css: rsc.bootstrap,
 		script: rsc.jquery,
 	});
 });

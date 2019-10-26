@@ -25,7 +25,7 @@ const midterm = {
 };
 
 midtermRouter.get('/midterm1', function(req, res, next) {
-	res.render('midterm/index', midterm);
+	res.render('midterm/midterm1/index', midterm);
 });
 
 module.exports = midtermRouter;

@@ -1,4 +1,4 @@
-import * as f from './functions.js';
+import * as f from '../functions.js';
 
 const VIDEO_ID = 'DyX-QZZBgpw';
 const BASE_URL = 'https://cst336.herokuapp.com/projects/api/videoLikesAPI.php?';
