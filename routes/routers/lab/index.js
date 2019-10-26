@@ -49,7 +49,7 @@ labRouter.get('/jsguess', function (req, res, next) {
 // AJAX
 labRouter.get('/ajax', function (req, res, next) {
 	res.render('lab/ajax/index', {
-		title: 'CST 238: Lab, AJAX',
+		title: 'CST 336: Lab, AJAX',
 		css: rsc.bootstrap,
 		script: rsc.jquery,
 	});
@@ -58,7 +58,7 @@ labRouter.get('/ajax', function (req, res, next) {
 // Quiz
 labRouter.get('/us-geo-quiz', function (req, res, next) {
 	res.render('lab/us-geo-quiz/index', {
-		title: 'CST 238: Lab, JS Geography Quiz',
+		title: 'CST 336: Lab, JS Geography Quiz',
 		css: rsc.bootstrap,
 		script: rsc.jquery,
 	});
@@ -67,7 +67,7 @@ labRouter.get('/us-geo-quiz', function (req, res, next) {
 // jQuery Challenge
 labRouter.get('/jquery-challenge', function (req, res, next) {
 	res.render('lab/jquery-challenge/index', {
-		title: 'CST 238: Lab, jQuery Challenge',
+		title: 'CST 336: Lab, jQuery Challenge',
 		css: rsc.bootstrap,
 		script: rsc.jquery,
 	});
@@ -76,7 +76,7 @@ labRouter.get('/jquery-challenge', function (req, res, next) {
 // Pixabay API
 labRouter.get('/pixabay', function (req, res, next) {
 	res.render('lab/pixabay/index', {
-		title: 'CST 238: Lab 5, Pixabay API',
+		title: 'CST 336: Lab 5, Pixabay API',
 		script: rsc.jquery,
 		css: rsc.bootstrap + '<link rel="stylesheet" href="/stylesheets/project_specific/lab5.css" type="text/css">',
 		fonts: rsc.materialIcons + '\n' + rsc.robotoFonts,
@@ -86,7 +86,7 @@ labRouter.get('/pixabay', function (req, res, next) {
 
 // Lab 6: Solar System App.
 const solarSystem = {
-	title: 'CST 238: Lab 6, Solar System',
+	title: 'CST 336: Lab 6, Solar System',
 	css: rsc.bootstrap,
 	fonts: rsc.materialIcons + '\n' + rsc.robotoFonts,
 	navbar: '<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light"><a class="navbar-brand" href="/lab/solar-system">Solar System</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNav"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Sun">Sun</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Mercury_(planet)">Mercury</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Venus">Venus</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Earth">Earth</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Mars">Mars</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Jupiter">Jupiter</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Saturn">Saturn</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Uranus">Uranus</span></a></li><li class="nav-item"><a class="nav-link" href="/lab/solar-system?view=Neptune">Neptune</span></a></li></ul></div></nav>',

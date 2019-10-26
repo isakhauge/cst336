@@ -10,7 +10,7 @@ const projectRouter = require('./routers/project/index');
 /* Landing page */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'CST 238',
+    title: 'CST 336',
     css: rsc.bootstrap,
   });
 });
