@@ -360,7 +360,7 @@ section > img {
   margin: 0 auto;
 }
 .container > *:not(*.row) {
-  margin: 1rem 2rem 1rem 2rem !important;
+  margin: 1rem 2rem 1rem 2rem;
 }
 
 .row {
