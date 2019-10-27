@@ -45,7 +45,7 @@ function createIntroElement() {
 	return `
 		<div>
 			<h1 class="text-center">Lab 6: Solar System</h1>
-			<h2 class="text-center h3 font-weight-light">Choose a planet from the navigation menu</h2>
+			<h2 class="text-center h3 font-weight-light">Choose an object from the navigation menu</h2>
 			<h3 class="text-center mt-3 h6 font-weight-light">This Node app is powered by Wikipedia Rest API</h3>
 		</div>
 	`;
