@@ -1,6 +1,6 @@
-import * as f from './functions.js';
-import {UnsplashImage} from "../components/UnsplashImage.js";
-import * as jQuery from '../vendors/jquery431.min.js';
+import * as f from '../functions.js';
+import {UnsplashImage} from "../../components/UnsplashImage.js";
+import * as jQuery from '../../vendors/jquery431.min.js';
 jQuery.inject();
 
 // Initial loading indication.
