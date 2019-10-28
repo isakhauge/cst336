@@ -6,7 +6,7 @@ jQuery.inject();
 // Initial loading indication.
 f.debug('Project 3', 'JS files imported', 'success');
 
-
+// Search image.
 function searchImage(searchValue, callback) {
 	const url = 'https://api.unsplash.com/photos/search?client_id=7e98612f0283cf4638dde02ee7d4e7e8d357e225cc16c2f1cc08f0d238580ea0&query=';
 	f.ajaxFetch(searchValue, url, function(raw) {
@@ -30,6 +30,7 @@ function searchImage(searchValue, callback) {
 	});
 }
 
+// Populate an image from search.
 function populateImage(id, src, aspectRatio, likes, alt) {
 	const a = UnsplashImage.rsc().attribute;
 	const grid = f.get('#grid');
@@ -42,6 +43,7 @@ function populateImage(id, src, aspectRatio, likes, alt) {
 	grid.append(elem);
 }
 
+// Display nothing found element.
 function displayNothingFound(searchValue) {
 	resetGrid();
 	const grid = f.get('#search-error');
@@ -50,11 +52,13 @@ function displayNothingFound(searchValue) {
 	grid.append(msg);
 }
 
+// Event listener: Search button, on click.
 const ev_searchButtonOnClick = {
 	type: 'click',
 	listener: initiateSearch,
 };
 
+// Event listener: Search bar, on enter key.
 const ev_searchBarOnEnter = {
 	type: 'keypress',
 	listener: function (e) {
@@ -64,6 +68,7 @@ const ev_searchBarOnEnter = {
 	}
 };
 
+// Initiate search.
 function initiateSearch(e) {
 	const searchValue = f.get('#search-bar').value;
 	if (searchValue.length > 2) {
@@ -73,6 +78,7 @@ function initiateSearch(e) {
 	}
 }
 
+// Reset the grid.
 function resetGrid() {
 	const grid = f.get('#grid');
 	const searchError = f.get('#search-error');
