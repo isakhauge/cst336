@@ -118,7 +118,7 @@ labRouter.get('/pixabay', async function (req, res, next) {
 	const keywords = ['flower', 'landscape', 'mountain', 'bird'];
 
 	// Pick random index from array.
-	const index = lab7.randomRange(0, keywords.length);
+	const index = lab7.randomRange(0, keywords.length - 1);
 
 	// Get keyword.
 	const keyword = keywords[index];
