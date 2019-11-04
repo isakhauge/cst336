@@ -1,3 +1,7 @@
+/*
+* WARNING: THIS DOCUMENT IN DECAPRICATED.
+* */
+
 import * as f from '../functions.js';
 import * as jQuery from '../../vendors/jquery431.min.js';
 import {PixabayImage} from "../../components/PixabayImage.js";

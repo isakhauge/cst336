@@ -7,14 +7,17 @@ const lab7 = require('../../../res/lab/lab7/lab7');
 * Lab
 * */
 
-// Flexbox
+// * Flexbox
 labRouter.get('/flexbox', function (req, res, next) {
 	res.render('lab/flexbox/index', {
 		title: 'CST 238: Lab, Flexbox',
 	});
 });
 
-// Hidden cat
+
+
+
+// * Hidden cat
 labRouter.get('/hiddencat', function (req, res, next) {
 	res.render('lab/hiddencat/index', {
 		title: 'CST 238: Lab',
@@ -22,7 +25,10 @@ labRouter.get('/hiddencat', function (req, res, next) {
 	});
 });
 
-// Hidden cat
+
+
+
+// * Hidden cat
 labRouter.get('/jquery-challenge', function (req, res, next) {
 	res.render('lab/jquery-challenge/index', {
 		title: 'CST 238: Lab, jQuery Challenge',
@@ -30,7 +36,10 @@ labRouter.get('/jquery-challenge', function (req, res, next) {
 	});
 });
 
-// Contact list
+
+
+
+// * Contact list
 labRouter.get('/contactlist', function (req, res, next) {
 	res.render('lab/contactlist/index', {
 		title: 'CST 238: Lab',
@@ -38,7 +47,10 @@ labRouter.get('/contactlist', function (req, res, next) {
 	});
 });
 
-// JS Gussing Numbers
+
+
+
+// * JS Gussing Numbers
 labRouter.get('/jsguess', function (req, res, next) {
 	res.render('lab/jsguess/index', {
 		title: 'CST 238: Lab, JS guessing numbers',
@@ -47,7 +59,10 @@ labRouter.get('/jsguess', function (req, res, next) {
 	});
 });
 
-// AJAX
+
+
+
+// * AJAX
 labRouter.get('/ajax', function (req, res, next) {
 	res.render('lab/ajax/index', {
 		title: 'CST 336: Lab, AJAX',
@@ -56,7 +71,10 @@ labRouter.get('/ajax', function (req, res, next) {
 	});
 });
 
-// Quiz
+
+
+
+// * Quiz
 labRouter.get('/us-geo-quiz', function (req, res, next) {
 	res.render('lab/us-geo-quiz/index', {
 		title: 'CST 336: Lab, JS Geography Quiz',
@@ -65,7 +83,10 @@ labRouter.get('/us-geo-quiz', function (req, res, next) {
 	});
 });
 
-// jQuery Challenge
+
+
+
+// * jQuery Challenge
 labRouter.get('/jquery-challenge', function (req, res, next) {
 	res.render('lab/jquery-challenge/index', {
 		title: 'CST 336: Lab, jQuery Challenge',
@@ -74,6 +95,10 @@ labRouter.get('/jquery-challenge', function (req, res, next) {
 	});
 });
 
+
+
+
+// * Pixabay API
 const pixabay = function(html = '', notFound = '') {
 	return {
 		title: 'CST 336: Lab 5, Pixabay API',
@@ -86,7 +111,7 @@ const pixabay = function(html = '', notFound = '') {
 	}
 };
 
-// Pixabay API
+// Get router.
 labRouter.get('/pixabay', async function (req, res, next) {
 
 	// Predefined array with keywords.
@@ -106,6 +131,7 @@ labRouter.get('/pixabay', async function (req, res, next) {
 	else res.render('lab/pixabay/index', pixabay(html, ''));
 });
 
+// Post router.
 labRouter.post('/pixabay', async (req, res, next) => {
 	const {value, orientation} = req.body;
 	const html = await lab7.searchImage(value, orientation);
@@ -115,7 +141,10 @@ labRouter.post('/pixabay', async (req, res, next) => {
 		res.render('lab/pixabay/index', pixabay(html, ''));
 });
 
-// Lab 6: Solar System App.
+
+
+
+// * Lab 6: Solar System App.
 const solarSystem = {
 	title: 'CST 336: Lab 6, Solar System',
 	css: rsc.bootstrap,

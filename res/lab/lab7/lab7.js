@@ -46,7 +46,7 @@ module.exports.searchImage = function (searchValue, orientation) {
 						let html = '';
 						let limit = 4;
 						while (limit > 0) {
-							const i = module.exports.randomRange(0, object.hits.length);
+							const i = module.exports.randomRange(0, object.hits.length - 1);
 							const e = object.hits[i];
 							html += makePixabayImage(
 								e.id,
