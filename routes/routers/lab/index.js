@@ -1,6 +1,7 @@
 const rsc = require('../../resources');
 const express = require('express');
 const labRouter = express.Router();
+const lab7 = require('../../../res/lab/lab7/lab7');
 
 /*
 * Lab
@@ -73,15 +74,45 @@ labRouter.get('/jquery-challenge', function (req, res, next) {
 	});
 });
 
-// Pixabay API
-labRouter.get('/pixabay', function (req, res, next) {
-	res.render('lab/pixabay/index', {
+const pixabay = function(html = '', notFound = '') {
+	return {
 		title: 'CST 336: Lab 5, Pixabay API',
 		script: rsc.jquery,
 		css: rsc.bootstrap + '<link rel="stylesheet" href="/stylesheets/project_specific/lab5.css" type="text/css">',
 		fonts: rsc.materialIcons + '\n' + rsc.robotoFonts,
 		footer: '<footer class="bg-dark py-3"> <section> <div class="container"> <p class="text-white text-center small m-0"> CST 336 - Internet Programming<br>The content on this website is written by Isak Hauge<br>&copy;<span id="year"></span>. All rights reserved.</p> <script>window.onload=function(){document.getElementById("year").innerText = new Date().getFullYear().toString();}</script> </div> </section> </footer>',
-	});
+		images: html,
+		notFound: notFound,
+	}
+};
+
+// Pixabay API
+labRouter.get('/pixabay', async function (req, res, next) {
+
+	// Predefined array with keywords.
+	const keywords = ['flower', 'landscape', 'mountain', 'bird'];
+
+	// Pick random index from array.
+	const index = lab7.randomRange(0, keywords.length);
+
+	// Get keyword.
+	const keyword = keywords[index];
+
+	// Get images.
+	const html = await lab7.searchImage(keyword, 'horizontal');
+
+	// ? If html is corrupted.
+	if (!html) res.render('lab/pixabay/index', pixabay('', lab7.makeNothingFoundElement(keyword)));
+	else res.render('lab/pixabay/index', pixabay(html, ''));
+});
+
+labRouter.post('/pixabay', async (req, res, next) => {
+	const {value, orientation} = req.body;
+	const html = await lab7.searchImage(value, orientation);
+	if (!html)
+		res.render('lab/pixabay/index', pixabay('', lab7.makeNothingFoundElement(value)));
+	else
+		res.render('lab/pixabay/index', pixabay(html, ''));
 });
 
 // Lab 6: Solar System App.

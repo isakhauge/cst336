@@ -1,31 +1,38 @@
 <section class="bg-primary py-5">
 	<div class="container">
 		<h1 class="text-white h3 text-center">Lab 5: Pixabay API</h1>
-		<h2 class="text-white h6 font-weight-light text-center">Created by Isak Hauge and Anders Bærø</h2>
+		<h2 class="text-white small font-weight-regular text-center text-uppercase">Upgraded to meet lab 7 requirements</h2>
+		<h2 class="text-white h6 font-weight-light text-center mt-4">Created by Isak Hauge and Anders Bærø</h2>
 	</div>
 </section>
 <section class="py-3 bg-light border-bottom">
 	<div class="container">
-		<div class="form-group my-2">
-			<input id="search-bar" type="text" class="form-control" placeholder="Search for an image">
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md my-2">
-				<select name="orientation" id="orientation" class="form-control">
-					<option value="horizontal" selected>Horizontal</option>
-					<option value="vertical">Vertical</option>
-				</select>
+		<form method="post", action="/lab/pixabay">
+			<div class="form-group my-2">
+				<input id="search-bar" name="value" type="text" class="form-control" placeholder="Search for an image">
 			</div>
-			<div class="form-group col-md my-2">
-				<button id="search" class="btn btn-primary w-100" type="button">Search</button>
+			<div class="form-row">
+				<div class="form-group col-md my-2">
+					<select name="orientation" id="orientation" class="form-control">
+						<option value="horizontal" selected>Horizontal</option>
+						<option value="vertical">Vertical</option>
+					</select>
+				</div>
+				<div class="form-group col-md my-2">
+					<button id="search" class="btn btn-primary w-100" type="submit">Search</button>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </section>
 <section class="py-5">
-	<div id="search-error" class="container"></div>
+	<div id="search-error" class="container">
+		{{{notFound}}}
+	</div>
 	<div class="container">
-		<div id="grid" class="grid"></div>
+		<div id="grid" class="grid">
+			{{{images}}}
+		</div>
 	</div>
 </section>
 <script type="module" src="/js/components/_ImportComponents.js"></script>
