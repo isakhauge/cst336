@@ -8,8 +8,16 @@ const portfolioRouter = express.Router();
 
 const portfolio = {
 	title: 'Isak Hauge: Personal Portfolio',
-	css: '<link rel="stylesheet" href="/stylesheets/project_specific/portfolio.css">',
-	fonts: '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&display=swap">',
+	css: {
+		custom: {
+			src: '/stylesheets/project_specific/portfolio.css'
+		}
+	},
+	font: {
+		pacifico: {
+			rsc: 'https://fonts.googleapis.com/css?family=Pacifico&display=swap'
+		}
+	},
 };
 
 /* Portfolio page */

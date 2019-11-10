@@ -1,4 +1,4 @@
-const rsc = require('../../resources');
+const cdn = require('../../../res/data/vendor/cdn');
 const express = require('express');
 const midtermRouter = express.Router();
 
@@ -7,8 +7,13 @@ const midtermRouter = express.Router();
 * */
 const midtermPractice = {
 	title: 'CST 336: Midterm Practice',
-	css: rsc.bootstrap,
-	fonts: rsc.materialIcons + '\n' + rsc.robotoFonts
+	css: {
+		bootstrap: cdn.css.bootstrap
+	},
+	font: {
+		roboto: cdn.font.roboto,
+		materialIcons: cdn.font.materialIcons
+	}
 };
 
 midtermRouter.get('/practice', function(req, res, next) {
@@ -20,8 +25,13 @@ midtermRouter.get('/practice', function(req, res, next) {
 * */
 const midterm = {
 	title: 'CST 336: Midterm',
-	css: rsc.bootstrap,
-	fonts: rsc.materialIcons + '\n' + rsc.robotoFonts
+	css: {
+		bootstrap: cdn.css.bootstrap
+	},
+	font: {
+		roboto: cdn.font.roboto,
+		materialIcons: cdn.font.materialIcons
+	}
 };
 
 midtermRouter.get('/midterm1', function(req, res, next) {

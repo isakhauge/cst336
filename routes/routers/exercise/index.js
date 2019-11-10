@@ -1,4 +1,4 @@
-const rsc = require('../../resources');
+const CDN = require('../../../res/data/vendor/cdn');
 const express = require('express');
 const exerciseRouter = express.Router();
 
@@ -8,8 +8,12 @@ const exerciseRouter = express.Router();
 exerciseRouter.get('/promises', function(req, res, next) {
 	res.render('pages/exercises/promises', {
 		title: 'Exercise: Promises',
-		css: rsc.bootstrap,
-		script: rsc.jquery,
+		css: {
+			bootstrap: CDN.css.bootstrap
+		},
+		js: {
+			jquery: CDN.js.jquery
+		},
 	});
 });
 

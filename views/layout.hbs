@@ -43,4 +43,20 @@
 		{{> footer/default_footer }}
     </body>
 
+	<style>
+		body {
+			display: flex;
+			-webkit-flex-direction: column;
+			flex-direction: column;
+			margin: 0;
+			min-width: 100%;
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+		body > main {
+			-webkit-flex-grow: 1;
+			flex-grow: 1;
+		}
+	</style>
+
 </html>
