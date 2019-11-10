@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	 <head>
+
+		<!-- Defualt meta data -->
+		{{> head/default_meta }}
+
+		<!-- Document title -->
+		<title>{{title}}</title>
+
+		<!-- Fonts: -->
+		{{#each fonts}}
+			<link rel="stylesheet" href="{{this}}" integrity="">
+		{{/each}}
+
+	</head>
+	<body>
+	<main>
+		{{{body}}}
+	</main>
+	</body>
+</html>

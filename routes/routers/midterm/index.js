@@ -12,7 +12,7 @@ const midtermPractice = {
 };
 
 midtermRouter.get('/practice', function(req, res, next) {
-	res.render('midterm-practice/index', midtermPractice);
+	res.render('pages/midterm-practice/index', midtermPractice);
 });
 
 /*
@@ -25,7 +25,7 @@ const midterm = {
 };
 
 midtermRouter.get('/midterm1', function(req, res, next) {
-	res.render('midterm/midterm1/index', midterm);
+	res.render('pages/midterm/midterm1/index', midterm);
 });
 
 module.exports = midtermRouter;

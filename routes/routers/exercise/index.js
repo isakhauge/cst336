@@ -6,7 +6,7 @@ const exerciseRouter = express.Router();
 * Exercise: Promises
 * */
 exerciseRouter.get('/promises', function(req, res, next) {
-	res.render('exercises/promises', {
+	res.render('pages/exercises/promises', {
 		title: 'Exercise: Promises',
 		css: rsc.bootstrap,
 		script: rsc.jquery,

@@ -14,17 +14,17 @@ const portfolio = {
 
 /* Portfolio page */
 portfolioRouter.get('/', function(req, res, next) {
-	res.render('portfolio/index', portfolio);
+	res.render('pages/portfolio/index', portfolio);
 });
 
 /* Portfolio page */
 portfolioRouter.get('/about', function(req, res, next) {
-	res.render('portfolio/about', portfolio);
+	res.render('pages/portfolio/about', portfolio);
 });
 
 /* Portfolio page */
 portfolioRouter.get('/contact', function(req, res, next) {
-	res.render('portfolio/contact', portfolio);
+	res.render('pages/portfolio/contact', portfolio);
 });
 
 module.exports = portfolioRouter;

@@ -1,4 +1,4 @@
-const rsc = require('./resources');
+const CDN = require('../res/data/vendor/cdn');
 const express = require('express');
 const router = express.Router();
 const labRouter = require('./routers/lab/index');
@@ -7,11 +7,12 @@ const midtermRouter = require('./routers/midterm/index');
 const portfolioRouter = require('./routers/portfolio/index');
 const projectRouter = require('./routers/project/index');
 
+
 /* Landing page */
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'CST 336',
-    css: rsc.bootstrap,
+    css: CDN.css
   });
 });
 

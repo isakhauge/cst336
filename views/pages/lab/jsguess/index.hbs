@@ -98,7 +98,7 @@
 		x.cout('Initial random number: ' + randomNumber, 'primary');
 
 		const gameOver = () => {
-			TEXTAREA_LOG.innerHTML = '<p class="font-weight-bold text-danger">GAME OVER: You Lost!<p>' + TEXTAREA_LOG.innerHTML;
+			TEXTAREA_LOG.innerHTML = '<p classes="font-weight-bold text-danger">GAME OVER: You Lost!<p>' + TEXTAREA_LOG.innerHTML;
 			TEXTAREA_LOG.setAttribute('class', 'p-4 border rounded text-white');
 			INPUT_NUMBER.value = '';
 			BUTTON_SUBMIT.disabled = true;
@@ -133,7 +133,7 @@
 						gameOver();
 					}
 				} else {
-					TEXTAREA_LOG.innerHTML = '<p class="text-secondary m-0">Invalid input value. The input value should be between 1 and 99</p>' + TEXTAREA_LOG.innerHTML;
+					TEXTAREA_LOG.innerHTML = '<p classes="text-secondary m-0">Invalid input value. The input value should be between 1 and 99</p>' + TEXTAREA_LOG.innerHTML;
 				}
 			} else {
 				gameOver();
@@ -156,7 +156,7 @@
 
 		function checkAnswer(answer, correctAnswer){
 			if (answer === correctAnswer){
-				TEXTAREA_LOG.innerHTML = '<p class="font-weight-bold m-0 text-success">[CORRECT]: ' + answer + ' is the correct answer!</p>' + TEXTAREA_LOG.innerHTML;
+				TEXTAREA_LOG.innerHTML = '<p classes="font-weight-bold m-0 text-success">[CORRECT]: ' + answer + ' is the correct answer!</p>' + TEXTAREA_LOG.innerHTML;
 				randomNumber = newRandom();
 				BUTTON_SUBMIT.disabled = true;
 				TEXT_WIN_COUNT.innerText = (++wins).toString();
@@ -166,7 +166,7 @@
 			}
 			else {
 				TEXTAREA_LOG.innerHTML =
-					'<p class="text-danger m-0"> #' + guesses + ' [WRONG]: ' + answer +
+					'<p classes="text-danger m-0"> #' + guesses + ' [WRONG]: ' + answer +
 					'. Too ' + ((answer < correctAnswer) ? 'low.' : 'high.') +
 					'</p>' + TEXTAREA_LOG.innerHTML;
 				return false;

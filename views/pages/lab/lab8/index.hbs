@@ -1,0 +1,238 @@
+<section class="py-5 bg-dark">
+	<div class="container">
+		<h1 class="text-white">Lab 8: US Geography Quiz</h1>
+	</div>
+</section>
+
+<section class="py-5">
+	<div class="container">
+		<form method="post" action="/lab/lab8-us-geo-quiz">
+
+			<!-- Capital of California -->
+			<div class="form-group">
+				<h3 id="h3-capital" data-answer="{{answer.captitalCalifornia}}">What is the capital of California?</h3>
+				<input type="text" name="capital-california" id="capital-california" class="form-control" required>
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- Longest river in the USA -->
+			<div class="form-group">
+				<h3 id="h3-river" data-answer="{{answer.longestRiver}}">What is the longest river?</h3>
+				<select name="longest-river" id="longest-river" class="form-control" required>
+					<option disabled selected>Select one</option>
+					<option value="mississippi">Mississippi</option>
+					<option value="missouri">Missouri</option>
+					<option value="colorado">Colorado</option>
+					<option value="delaware">Delaware</option>
+				</select>
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- The smallest state in USA -->
+			<div class="form-group py-3">
+				<h3 id="h3-state" data-answer="{{answer.smallestState}}">What is the smallest US state?</h3>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="smallest-state" id="radio-maine" value="maine">
+					<label class="form-check-label" for="radio-maine">Maine</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="smallest-state" id="radio-rhodeisland" value="rhode-island">
+					<label class="form-check-label" for="radio-rhodeisland">Rhode Island</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="smallest-state" id="radio-maryland" value="maryland">
+					<label class="form-check-label" for="radio-maryland">Maryland</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="smallest-state" id="radio-delaware" value="delaware">
+					<label class="form-check-label" for="radio-delaware">Delaware</label>
+				</div>
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- Presidents carved into Mount Rushmore -->
+			<div class="form-group py-3">
+				<h3 id="h3-presidents" data-answer="{{answer.rushmorePresidents}}">What presidents are carved into Mount Rushmore?</h3>
+				{{#each question.rushmorePresident}}
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" name="rushmore-presidents" id="{{this.id}}" value="{{this.value}}">
+						<label class="form-check-label" for="{{this.id}}on">{{this.text}}</label>
+					</div>
+				{{/each}}
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- The State seal of California -->
+			<div class="form-group">
+				<h3 id="h3-seal" data-answer="{{answer.californiaSeal}}">What image is in the Great Seal of the State of California?</h3>
+				<div class="row">
+					<div class="col-sm">
+						<input type="radio" name="cali-seal" id="seal-1" value="seal-1" hidden>
+						<label for="seal-1"><img src="/images/lab/us-geo-quiz/seal1.png" alt=""></label>
+					</div>
+					<div class="col-sm">
+						<input type="radio" name="cali-seal" id="seal-2" value="seal-2" hidden>
+						<label for="seal-2"><img src="/images/lab/us-geo-quiz/seal2.png" alt=""></label>
+					</div>
+					<div class="col-sm">
+						<input type="radio" name="cali-seal" id="seal-3" value="seal-3" hidden>
+						<label for="seal-3"><img src="/images/lab/us-geo-quiz/seal3.png" alt=""></label>
+					</div>
+				</div>
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- Colombus Discovers America -->
+			<div class="form-group py-3">
+				<h3 id="h3-colombus" data-answer="{{answer.yearColombusDiscoveredAmerica}}">In what year did Cristopher Colombus discover America?</h3>
+				<input class="form-control" type="number" name="year-colombus-discovered-america" id="year-discover">
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- The largest state in USA -->
+			<div class="form-group py-3">
+				<h3 id="h3-largest-state" data-answer="{{answer.largestState}}">What is the largest US state?</h3>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="largest-state" id="radio-alaska" value="alaska">
+					<label class="form-check-label" for="radio-alaska">Alaska</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="largest-state" id="radio-texas" value="texas">
+					<label class="form-check-label" for="radio-texas">Texas</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="largest-state" id="radio-california" value="california">
+					<label class="form-check-label" for="radio-california">California</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="largest-state" id="radio-montana" value="montana">
+					<label class="form-check-label" for="radio-montana">Montana</label>
+				</div>
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- Second president of USA -->
+			<div class="form-group">
+				<h3 id="h3-second-president" data-answer="{{answer.secondPresident}}">Who was the second president of USA?</h3>
+				<select name="second-president" id="second-president" class="form-control" required>
+					<option disabled selected>Select one</option>
+					<option value="washington">George Washington</option>
+					<option value="adams">John Adams</option>
+					<option value="jefferson">Thomas Jefferson</option>
+					<option value="madison">James Madison</option>
+				</select>
+				<div class="alert alert-success my-2">Correct answer!</div>
+				<div class="alert alert-danger my-2">Incorrect answer!</div>
+			</div>
+
+			<!-- Submit answers -->
+			<div class="form-group">
+				<button type="submit" id="btn-submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+</section>
+<section class="py-5 border-top">
+	<div class="container">
+		<div id="game-status" class="bg-light border rounded p-3 text-center">
+			<h2>The total score is: <span id="game-score">{{points}}</span></h2>
+			<h3>Quiz taken: <span id="quiz-taken">{{trials}}</span></h3>
+		</div>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer>
+	<section class="py-5 border-top">
+		<div class="container">
+			<div class="d-flex justify-content-between">
+				<div class="d-flex align-items-center">
+					<img src="/images/lab/us-geo-quiz/csumb_logo.png" width="100" alt="">
+					<p class="m-0 mx-2 small">
+						CST 336. ©2019 Isak Hauge and Anders Bærø.<br>
+						Disclaimer: The information in this website is fictitious.<br>
+						It is used for academic purposes only.
+					</p>
+				</div>
+				<div class="d-flex flex-fill align-items-center justify-content-end">
+					<img src="/images/lab/us-geo-quiz/buddy_verified.png" width="80" alt="">
+				</div>
+			</div>
+		</div>
+	</section>
+</footer>
+
+<!-- Style -->
+<style>
+	input[type="radio"][hidden] ~ label {
+		width: 100%;
+		text-align: center;
+		border: 1px solid rgba(0,0,0,0.1);
+		border-radius: 5px;
+	}
+
+	input[type="radio"][hidden] ~ label:hover {
+		background-color: rgba(0,0,0,0.05);
+		cursor: pointer;
+	}
+
+	input[type="radio"][hidden]:checked ~ label {
+		background-color: rgba(0,0,0,0.1);
+	}
+
+	input[type="radio"][hidden] ~ label > img {
+		-webkit-filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+		filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+		padding: 10px;
+	}
+
+	input[type="radio"]:checked ~ label > img {
+		-webkit-filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+		filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+	}
+
+	label, input, select {
+		cursor: pointer;
+	}
+
+	.form-group h3::before {
+		width: 30px;
+		height: 30px;
+		background-size: contain;
+		float: left;
+		margin-right: 10px;
+	}
+
+	.form-group h3[data-answer="true"]::before {
+		background-image: url("/images/lab/us-geo-quiz/checkmark.png");
+		content: "";
+	}
+
+	.form-group h3[data-answer="false"]::before {
+		background-image: url("/images/lab/us-geo-quiz/xmark.png");
+		content: "";
+	}
+
+	.form-group h3[data-answer] ~ .alert {
+		display: none;
+	}
+
+	.form-group h3[data-answer="true"] ~ .alert.alert-success {
+		display: block;
+	}
+
+	.form-group h3[data-answer="false"] ~ .alert.alert-danger {
+		display: block;
+	}
+</style>
+<script>
+	if ({{congratulate}})
+		alert('Contratulations!');
+</script>

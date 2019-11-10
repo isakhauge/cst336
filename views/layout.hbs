@@ -2,51 +2,45 @@
 <html lang="en">
     <head>
 
-        <!-- Favicon: -->
-        <link rel="icon" href="/favicon.ico">
-
-
-        <!-- Settings: -->
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, height=device-height user-scalable=no, initial-scale=1.0, viewport-fit=cover">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
-        <!-- Application settings: -->
-        <meta name="application-name" content="Isak">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-
-        <!-- Description: -->
-        <meta name="description" content="CST 336 - Internet Programming">
-
-
-        <!-- Crawling and indexing: -->
-        <meta name="robots" content="index,follow"><!-- All Search Engines -->
-        <meta name="googlebot" content="index,follow"><!-- Google Specific -->
-
-
-        <!-- Disable Google Translate: -->
-        <meta name="google" content="notranslate">
+		<!-- Defualt meta data -->
+        {{> head/default_meta }}
 
         <title>{{title}}</title>
 
         <!-- Google Fonts: -->
-		{{{fonts}}}
+		{{#if font}}
+			{{#each font}}
+				<link rel="stylesheet" href="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}">
+			{{/each}}
+		{{else}}
+			<!-- No custom fonts imported. -->
+		{{/if}}
 
         <!-- Custom style: -->
-		{{{css}}}
+		{{#if css}}
+			{{#each css}}
+				<link rel="stylesheet" href="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}">
+			{{/each}}
+		{{else}}
+			<link rel="stylesheet" href="/stylesheets/style.css">
+		{{/if}}
 
 		<!-- Scripts: -->
-		{{{script}}}
+		{{#if js}}
+			{{#each js}}
+				<script src="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}"></script>
+			{{/each}}
+		{{else}}
+			<!-- No JS imported. -->
+		{{/if}}
     </head>
+
     <body>
 		{{{navbar}}}
 		<main>
             {{{body}}}
         </main>
-		{{{footer}}}
+		{{> footer/default_footer }}
     </body>
+
 </html>
