@@ -1,5 +1,5 @@
 /*
-* WARNING: THIS DOCUMENT IN DECAPRICATED.
+* WARNING: THIS DOCUMENT IN DEPRICATED.
 * */
 
 import * as f from '../functions.js';

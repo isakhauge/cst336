@@ -295,8 +295,37 @@ export function make(tagName, innerHTML=null) {
 /**
  * Flush Children.
  * @param node The node who's children shall be flushed.
+ * @param {function} callback
  */
-export function flushChildren(node) {
+export function flushChildren(node, callback) {
 	while (node.hasChildNodes())
 		node.firstChild.remove();
+	callback();
 }
+
+
+/**
+ * HTTP
+ * @type {{POST: HTTP.POST, GET: HTTP.GET}}
+ */
+export const HTTP = {
+	GET: function (url, callback) {
+		const xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
+				callback(xhr.responseText);
+		};
+		xhr.open('GET', url, true);
+		xhr.send();
+	},
+	POST: function (url, body, callback) {
+		const xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
+				callback(xhr.responseText);
+		};
+		xhr.open('POST', url, true);
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.send(JSON.stringify(body));
+	}
+};

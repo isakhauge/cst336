@@ -10,28 +10,28 @@
         <!-- Google Fonts: -->
 		{{#if font}}
 			{{#each font}}
-				<link rel="stylesheet" href="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}">
+		<link rel="stylesheet" href="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}">
 			{{/each}}
 		{{else}}
-			<!-- No custom fonts imported. -->
+		<!-- No custom fonts imported. -->
 		{{/if}}
 
         <!-- Custom style: -->
 		{{#if css}}
 			{{#each css}}
-				<link rel="stylesheet" href="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}">
+		<link rel="stylesheet" href="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}">
 			{{/each}}
 		{{else}}
-			<link rel="stylesheet" href="/stylesheets/style.css">
+		<link rel="stylesheet" href="/stylesheets/style.css">
 		{{/if}}
 
 		<!-- Scripts: -->
 		{{#if js}}
 			{{#each js}}
-				<script src="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}"></script>
+		<script async defer id="{{this.id}}" src="{{this.src}}" integrity="{{this.integrity}}" crossorigin="{{this.crossOrigin}}"></script>
 			{{/each}}
 		{{else}}
-			<!-- No JS imported. -->
+		<!-- No JS imported. -->
 		{{/if}}
     </head>
 

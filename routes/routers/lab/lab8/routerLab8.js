@@ -10,7 +10,7 @@ const f = require('../../../../res/backendFunctions');
 const config = {
 	title: 'Lab 8',
 	css: {
-		bootstrap: CDN.css.bootstrap
+		bootstrap: CDN.css.bootstrap,
 	},
 	font: {
 		roboto: CDN.font.roboto,

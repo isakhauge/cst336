@@ -2,6 +2,7 @@ const CDN = require('../../../res/data/vendor/cdn');
 const express = require('express');
 const labRouter = express.Router();
 const routerLab8 = require('./lab8/routerLab8');
+const routerLab9 = require('./lab9/routerLab9');
 const lab7 = require('../../../res/lab/lab7/lab7');
 
 /*
@@ -223,5 +224,10 @@ labRouter.get('/solar-system?view=Neptune', function (req, res, next) {
 
 // * Lab 8: US Geography Quiz (updated)
 labRouter.use('/lab8-us-geo-quiz', routerLab8);
+
+
+
+// * Lab 9: Inspirational lab9-quotes
+labRouter.use('/lab9', routerLab9);
 
 module.exports = labRouter;
