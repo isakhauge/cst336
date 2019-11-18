@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"start": "nodeemon ./bin/www",
+		"start": "nodemon ./bin/www",
 		"dev": "nodemon ./bin/www",
 		"ex": "nodemon ./exercises/node/basicServer.js",
 		"tsc": "tsc"
