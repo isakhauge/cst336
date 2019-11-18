@@ -22,7 +22,6 @@ router.post('/quote', (req, res, next) => {
 	sql += `SET @sex="${req.body.sex}"; `;
 	sql += `SET @category="${req.body.category}"; `;
 	sql += `CALL quote_query2(@sex,@quote,@author,@category);`;
-	console.log(sql);
 	db.query(sql)
 		.then((resolved) => {
 			res.json(resolved[4]);
@@ -30,8 +29,8 @@ router.post('/quote', (req, res, next) => {
 });
 
 router.post('/author', (req, res, next) => {
-	const sql = `SELECT * FROM l9_author AS A WHERE CONCAT(A.\`firstName\`, " ", A.\`lastName\`) LIKE CONCAT("%", "${req.body.name}", "%");`;
-	db.query(sql)
+	const sql = 'SELECT * FROM l9_author AS A WHERE CONCAT(A.`firstName`, " ", A.`lastName`) LIKE CONCAT("%", ?, "%")';
+	db.prep(sql, [req.body.name])
 	.then(result => {
 		res.json(result);
 	});
@@ -40,9 +39,9 @@ router.post('/author', (req, res, next) => {
 router.get('/category', (req, res, next) => {
 	const sql = 'SELECT DISTINCT(category) FROM `l9_quotes`;';
 	db.query(sql)
-		.then(resolved => {
-			res.json(resolved);
-		})
+	.then(resolved => {
+		res.json(resolved);
+	})
 });
 
 module.exports = router;
