@@ -6,6 +6,7 @@ var logger = require('morgan');
 var hbs = require('hbs');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const session = require('express-session');
 
 // Require DotEnv.
 require('dotenv').config();
@@ -24,6 +25,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  name: 'SID',
+  secret: '#$_Æ@',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: (1000 * 60 * 60 * 2),
+    secure: false
+  }
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

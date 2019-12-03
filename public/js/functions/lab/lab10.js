@@ -173,6 +173,10 @@ function createAuthor({fname,lname,dob,dod,sex}, callback) {
     });
 }
 
+function logout() {
+    document.location.href = '/lab/lab10/logout';
+}
+
 function onLoad() {
 
     cout('JS Loaded: Lab 10');
@@ -211,6 +215,8 @@ function onLoad() {
             });
         }
     };
+
+    get('#logout').onclick = logout;
 
     populateAuthors(function() {
         console.log('End of code');
