@@ -1,9 +1,10 @@
 const CDN = require('../../../res/data/vendor/cdn');
 const express = require('express');
 const labRouter = express.Router();
+const lab7 = require('../../../res/lab/lab7/lab7');
 const routerLab8 = require('./lab8/routerLab8');
 const routerLab9 = require('./lab9/routerLab9');
-const lab7 = require('../../../res/lab/lab7/lab7');
+const routerLab10 = require('../lab/lab10/routerLab10');
 
 /*
 * Lab
@@ -229,5 +230,9 @@ labRouter.use('/lab8-us-geo-quiz', routerLab8);
 
 // * Lab 9: Inspirational lab9-quotes
 labRouter.use('/lab9', routerLab9);
+
+
+// * Lab 10: Admin page for inspirational quotes.
+labRouter.use('/lab10', routerLab10);
 
 module.exports = labRouter;

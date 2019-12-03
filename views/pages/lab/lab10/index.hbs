@@ -1,0 +1,110 @@
+<section class="py-5 bg-primary">
+	<div class="container">
+		<h1 class="text-white text-center">Lab 10: Author Admin Page</h1>
+		<h2 class="text-white text-center h6 font-weight-light">by Isak Hauge and Anders Bærø</h2>
+	</div>
+</section>
+<section class="py-5">
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>DOB</th>
+					<th>DOD</th>
+					<th><button id="new-author" class="btn btn-primary" type="button" data-toggle="modal" data-target="#author-modal">New Author</button></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="1">
+					<td data-id>1</td>
+					<td data-fname>Isak</td>
+					<td data-lname>Hauge</td>
+					<td data-dob>1991-03-05</td>
+					<td data-dod>2245-03-05</td>
+					<td data-crud>
+						<button class="btn btn-warning">Edit</button>
+						<button class="btn btn-danger">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="author-modal" tabindex="-1" role="dialog" aria-labelledby="Author Modal" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modal-title">Author</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="input-id">ID</label>
+						<input type="text" id="input-id" name="id" class="form-control" readonly disabled>
+					</div>
+					<div class="form-group">
+						<label for="input-fname">First Name</label>
+						<input type="text" id="input-fname" name="fname" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="input-lname">Last Name</label>
+						<input type="text" id="input-lname" name="lname" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="input-dob">Date of Birth</label>
+						<input type="date" id="input-dob" name="dob" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="input-dod">Date of Death</label>
+						<input type="date" id="input-dod" name="dod" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="input-gender">Gender</label>
+						<select type="text" id="select-gender" name="gender" class="form-control">
+							<option value="F">Female</option>
+							<option value="M">Male</option>
+							<option value="O">Other</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="submit" type="button" class="btn btn-success">Submit</button>
+				<button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalCenterTitle">Delete author</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to delete <span id="author-name"></span> ?
+			</div>
+			<div class="modal-footer">
+				<button id="delete-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button id="delete" type="button" class="btn btn-danger">Yes, delete</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="module" src="/js/functions/lab/lab10.js"></script>

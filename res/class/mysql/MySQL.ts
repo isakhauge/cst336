@@ -71,15 +71,11 @@ class MySQL {
 	 * @param sql
 	 */
 	public query(sql: string) : Promise<any> {
+		MySQL.cout(`Using instance (${MySQL.instance.getId()})`);
 		return new Promise((resolve, reject) => {
-			this.pool.query(sql, (err: any, rows: any) => {
-				if (err) {
-					reject(new Error(err));
-				} else {
-					if (rows.length > 0) {
-						resolve(rows);
-					} else reject(new Error('There is no result.'));
-				}
+			this.pool.query(sql, (err: any, result: any) => {
+				if (err) resolve(err);
+				else resolve(result);
 			});
 		}).catch((promiseError) => {
 			console.error(promiseError);
@@ -92,21 +88,19 @@ class MySQL {
 	 * @param data
 	 */
 	public prep(sql : string, data : Array<any>) : Promise<any> {
+		MySQL.cout(`Using instance (${MySQL.instance.getId()})`);
 		return new Promise((resolve, reject) => {
 			this.pool.execute(sql, data, (err : any, result : any) => {
-				if (err) {
-					reject(new Error(err));
-				} else {
-					if (result.length > 0) {
-						resolve(result);
-					} else {
-						reject(new Error('There is no result.'))
-					}
-				}
+				if (err) resolve(err);
+				else resolve(result);
 			});
 		}).catch((promiseError) => {
 			console.log(promiseError);
 		});
+	}
+
+	public static SHA256(value: string): string {
+		return CRYPTO.createHash('sha256').update(value).digest('base64');
 	}
 
 	/**

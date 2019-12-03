@@ -58,18 +58,13 @@ var MySQL = /** @class */ (function () {
      */
     MySQL.prototype.query = function (sql) {
         var _this = this;
+        MySQL.cout("Using instance (" + MySQL.instance.getId() + ")");
         return new Promise(function (resolve, reject) {
-            _this.pool.query(sql, function (err, rows) {
-                if (err) {
-                    reject(new Error(err));
-                }
-                else {
-                    if (rows.length > 0) {
-                        resolve(rows);
-                    }
-                    else
-                        reject(new Error('There is no result.'));
-                }
+            _this.pool.query(sql, function (err, result) {
+                if (err)
+                    resolve(err);
+                else
+                    resolve(result);
             });
         }).catch(function (promiseError) {
             console.error(promiseError);
@@ -82,23 +77,20 @@ var MySQL = /** @class */ (function () {
      */
     MySQL.prototype.prep = function (sql, data) {
         var _this = this;
+        MySQL.cout("Using instance (" + MySQL.instance.getId() + ")");
         return new Promise(function (resolve, reject) {
             _this.pool.execute(sql, data, function (err, result) {
-                if (err) {
-                    reject(new Error(err));
-                }
-                else {
-                    if (result.length > 0) {
-                        resolve(result);
-                    }
-                    else {
-                        reject(new Error('There is no result.'));
-                    }
-                }
+                if (err)
+                    resolve(err);
+                else
+                    resolve(result);
             });
         }).catch(function (promiseError) {
             console.log(promiseError);
         });
+    };
+    MySQL.SHA256 = function (value) {
+        return CRYPTO.createHash('sha256').update(value).digest('base64');
     };
     /**
      * Config
